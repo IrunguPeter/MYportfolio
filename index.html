@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peter Irungu &bull; Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#hero" class="logo">PI.</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#work" class="nav-link">Work</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="menu-btn" id="menuBtn" aria-label="Menu">
+                <span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div class="hero-inner">
+            <p class="badge">Available for freelance work</p>
+            <h1 class="hero-title">
+                I build<br>
+                <span class="gradient-text">online presence.</span>
+            </h1>
+            <p class="hero-desc">
+                I help people build an online presence &mdash; with a website.
+            </p>
+            <div class="hero-actions">
+                <a href="#work" class="btn btn-primary">See my work</a>
+                <a href="#contact" class="btn btn-ghost">Get in touch</a>
+            </div>
+            <div class="hero-socials">
+                <a href="https://github.com/IrunguPeter" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/peter-irungu-758aa6373" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="work">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-tag">Selected work</span>
+                <h2 class="section-title">Projects I've built</h2>
+            </div>
+            <div class="carousel-wrap">
+            <div class="carousel-track" id="carouselTrack">
+                <article class="work-card">
+                    <div class="work-img" style="background: linear-gradient(135deg, #0f172a, #1e293b);">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="work-body">
+                        <div class="work-tags">
+                            <span>JavaScript</span>
+                            <span>Full-Stack</span>
+                        </div>
+                        <h3>ALX Capstone Project</h3>
+                        <p>The final capstone project for ALX — a full-stack web application showcasing everything learned throughout the program.</p>
+                        <div class="work-links">
+                            <a href="https://pcbuilderapp.vercel.app" target="_blank">Live <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://github.com/IrunguPeter/alx-capstone-project" target="_blank">Code <i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="work-card">
+                    <div class="work-img" style="background: linear-gradient(135deg, #0c4a6e, #0369a1);">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="work-body">
+                        <div class="work-tags">
+                            <span>TypeScript</span>
+                            <span>React</span>
+                            <span>Firebase</span>
+                        </div>
+                        <h3>FC League Companion</h3>
+                        <p>Track FIFA game night scores with friends in real-time. Google login, live standings, QR code invites, and auto-calculated rankings.</p>
+                        <div class="work-links">
+                            <a href="https://fc-league-app.vercel.app" target="_blank">Live <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://github.com/IrunguPeter/FC-league-app" target="_blank">Code <i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="work-card">
+                    <div class="work-img" style="background: linear-gradient(135deg, #1e1b4b, #4c1d95);">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="work-body">
+                        <div class="work-tags">
+                            <span>TypeScript</span>
+                            <span>React</span>
+                            <span>Express</span>
+                        </div>
+                        <h3>EntrepStore (E-Shop)</h3>
+                        <p>Full-stack e-commerce platform for micro businesses. Admin dashboard, product management, sales analytics, and SQLite backend.</p>
+                        <div class="work-links">
+                            <a href="https://github.com/IrunguPeter/E-shop" target="_blank">Code <i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="work-card">
+                    <div class="work-img" style="background: linear-gradient(135deg, #065f46, #059669);">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="work-body">
+                        <div class="work-tags">
+                            <span>Python</span>
+                            <span>Web</span>
+                        </div>
+                        <h3>cashsasa</h3>
+                        <p>An advertising platform that rewards users through commissions and referrals. Built with Python for the backend.</p>
+                        <div class="work-links">
+                            <a href="https://github.com/IrunguPeter/cashsasa" target="_blank">Code <i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="work-card">
+                    <div class="work-img" style="background: linear-gradient(135deg, #b91c1c, #ef4444);">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="work-body">
+                        <div class="work-tags">
+                            <span>Python</span>
+                            <span>Game</span>
+                        </div>
+                        <h3>Python Game</h3>
+                        <p>A fun interactive game built in Python, demonstrating core programming concepts, game loops, and player mechanics.</p>
+                        <div class="work-links">
+                            <a href="https://github.com/IrunguPeter/python-game" target="_blank">Code <i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="work-card">
+                    <div class="work-img" style="background: linear-gradient(135deg, #7c3aed, #a78bfa);">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="work-body">
+                        <div class="work-tags">
+                            <span>Python</span>
+                            <span>Automation</span>
+                        </div>
+                        <h3>Todoist Bot</h3>
+                        <p>Automation bot that streamlines data entry into Todoist, making task management faster and more efficient through automation.</p>
+                        <div class="work-links">
+                            <a href="https://github.com/IrunguPeter/Todoist_bot" target="_blank">Code <i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+                <button class="carousel-btn carousel-prev" id="prevBtn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn carousel-next" id="nextBtn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-visual">
+                    <div class="avatar-ring">
+                        <span class="avatar-initials">PI</span>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-num" data-target="1">0</span>
+                            <span class="stat-label">Year</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num" data-target="20">0</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num" data-target="6">0</span>
+                            <span class="stat-label">Tools</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <span class="section-tag">About me</span>
+                    <h2 class="section-title">Crafting your digital footprint.</h2>
+                    <p>
+                        I'm a front-end web developer from Kenya specializing in portfolios and landing pages.
+                        I help individuals and businesses establish a strong online presence with clean,
+                        responsive, and performant websites.
+                    </p>
+                    <p>
+                        Whether you're a freelancer needing a portfolio, or a business wanting a landing page
+                        that converts — I turn your vision into a website that works.
+                    </p>
+                    <div class="about-tech">
+                        <i class="fab fa-html5" title="HTML5"></i>
+                        <i class="fab fa-css3-alt" title="CSS3"></i>
+                        <i class="fab fa-js" title="JavaScript"></i>
+                        <i class="fab fa-react" title="React"></i>
+                        <i class="fab fa-node-js" title="Node.js"></i>
+                        <i class="fab fa-python" title="Python"></i>
+                        <i class="fab fa-figma" title="Figma"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-card">
+                <div class="contact-left">
+                    <span class="section-tag">Get in touch</span>
+                    <h2 class="section-title">Let's work together.</h2>
+                    <p>
+                        Need a portfolio that showcases your work or a landing page for your business?
+                        Let's build something that gives you the online presence you deserve.
+                    </p>
+                    <div class="contact-details">
+                        <div class="detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>irungupeter204@gmail.com</span>
+                        </div>
+                        <div class="detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kenya</span>
+                        </div>
+                        <div class="detail">
+                            <i class="fab fa-github"></i>
+                            <span>github.com/IrunguPeter</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="name" placeholder="Name" required>
+                                <span class="error"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" placeholder="Email" required>
+                                <span class="error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" placeholder="Subject" required>
+                            <span class="error"></span>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="4" placeholder="Message" required></textarea>
+                            <span class="error"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <span id="btnText">Send message</span>
+                            <i class="fas fa-arrow-right" id="btnIcon"></i>
+                        </button>
+                    </form>
+                    <div class="success-msg" id="successMsg">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Thanks! I'll get back to you soon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>&copy; 2026 Peter Irungu</p>
+            <div class="footer-links">
+                <a href="https://github.com/IrunguPeter" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/peter-irungu-758aa6373" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            <button id="scrollTop" class="top-btn" aria-label="Scroll to top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
