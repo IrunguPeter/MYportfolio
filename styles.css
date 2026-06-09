@@ -67,6 +67,8 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
@@ -74,6 +76,10 @@ body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition: background 0.4s ease, color 0.4s ease;
@@ -196,6 +202,7 @@ img {
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     width: 100%;
     background: transparent;
     z-index: 100;
@@ -213,6 +220,7 @@ img {
 
 .nav-inner {
     max-width: 1100px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 1.5rem;
     display: flex;
@@ -354,6 +362,7 @@ img {
     position: absolute;
     inset: 0;
     z-index: 0;
+    overflow: hidden;
 }
 
 .hero-bg-img {
@@ -374,8 +383,8 @@ img {
 .hero-inner {
     position: relative;
     z-index: 2;
+    width: 100%;
     max-width: 800px;
-    margin: 0 auto;
     text-align: center;
 }
 
@@ -1186,6 +1195,7 @@ img {
 
 .footer-inner {
     max-width: 1100px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 1.5rem;
     display: flex;
