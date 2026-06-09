@@ -171,10 +171,14 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.classList.add('loading');
         btnText.textContent = 'Sending...';
 
-        fetch('/api/contact', {
+        fetch('https://api.web3forms.com/submit', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
             body: JSON.stringify({
+                access_key: '691b935c-2b39-41cd-9894-2b117f8b9ff4',
                 name: name.value.trim(),
                 email: email.value.trim(),
                 subject: subject.value.trim(),
