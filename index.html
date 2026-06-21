@@ -11,6 +11,7 @@
 <body>
 
     <div class="cursor-follower"></div>
+    <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
 
     <div class="noise-overlay"></div>
 
@@ -82,150 +83,147 @@
                 <h2 class="section-title">Projects I've built</h2>
                 <p class="section-desc">Each project reflects a commitment to quality and thoughtful design.</p>
             </div>
-            <div class="carousel-wrap" data-reveal="fade-up" data-reveal-delay="100">
-                <div class="carousel-track" id="carouselTrack">
-                    <article class="work-card">
-                        <div class="work-img">
-                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=75"
-                                 alt="ALX Capstone Project"
-                                 loading="lazy">
-                            <div class="work-img-overlay"></div>
+            <div class="work-filters" data-reveal="fade-up" data-reveal-delay="50">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="frontend">Frontend</button>
+                <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+                <button class="filter-btn" data-filter="python">Python &amp; Automation</button>
+            </div>
+            <div class="projects-grid" id="projectsGrid" data-reveal="fade-up" data-reveal-delay="100">
+                <article class="work-card" data-category="fullstack">
+                    <div class="work-img">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=75"
+                             alt="ALX Capstone Project"
+                             loading="lazy">
+                        <div class="work-img-overlay"></div>
+                    </div>
+                    <div class="work-body">
+                        <div class="work-tags">
+                            <span>JavaScript</span>
+                            <span>Full-Stack</span>
                         </div>
-                        <div class="work-body">
-                            <div class="work-tags">
-                                <span>JavaScript</span>
-                                <span>Full-Stack</span>
-                            </div>
-                            <h3>ALX Capstone Project</h3>
-                            <p>The final capstone project for ALX — a full-stack web application showcasing everything learned throughout the program.</p>
-                            <div class="work-links">
-                                <a href="https://pcbuilderapp.vercel.app" target="_blank" rel="noopener noreferrer">
-                                    Live Demo <i class="fas fa-arrow-right"></i>
-                                </a>
-                                <a href="https://github.com/IrunguPeter/alx-capstone-project" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-github"></i> Source
-                                </a>
-                            </div>
+                        <h3>ALX Capstone Project</h3>
+                        <p>The final capstone project for ALX — a full-stack web application showcasing everything learned throughout the program.</p>
+                        <div class="work-links">
+                            <a href="https://pcbuilderapp.vercel.app" target="_blank" rel="noopener noreferrer">
+                                Live Demo <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="https://github.com/IrunguPeter/alx-capstone-project" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i> Source
+                            </a>
                         </div>
-                    </article>
-                    <article class="work-card">
-                        <div class="work-img">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=75"
-                                 alt="FC League Companion"
-                                 loading="lazy">
-                            <div class="work-img-overlay"></div>
+                    </div>
+                </article>
+                <article class="work-card" data-category="frontend">
+                    <div class="work-img">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=75"
+                             alt="FC League Companion"
+                             loading="lazy">
+                        <div class="work-img-overlay"></div>
+                    </div>
+                    <div class="work-body">
+                        <div class="work-tags">
+                            <span>TypeScript</span>
+                            <span>React</span>
+                            <span>Firebase</span>
                         </div>
-                        <div class="work-body">
-                            <div class="work-tags">
-                                <span>TypeScript</span>
-                                <span>React</span>
-                                <span>Firebase</span>
-                            </div>
-                            <h3>FC League Companion</h3>
-                            <p>Track FIFA game night scores with friends in real-time. Google login, live standings, QR code invites, and auto-calculated rankings.</p>
-                            <div class="work-links">
-                                <a href="https://fc-league-app.vercel.app" target="_blank" rel="noopener noreferrer">
-                                    Live Demo <i class="fas fa-arrow-right"></i>
-                                </a>
-                                <a href="https://github.com/IrunguPeter/FC-league-app" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-github"></i> Source
-                                </a>
-                            </div>
+                        <h3>FC League Companion</h3>
+                        <p>Track FIFA game night scores with friends in real-time. Google login, live standings, QR code invites, and auto-calculated rankings.</p>
+                        <div class="work-links">
+                            <a href="https://fc-league-app.vercel.app" target="_blank" rel="noopener noreferrer">
+                                Live Demo <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="https://github.com/IrunguPeter/FC-league-app" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i> Source
+                            </a>
                         </div>
-                    </article>
-                    <article class="work-card">
-                        <div class="work-img">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=75"
-                                 alt="EntrepStore"
-                                 loading="lazy">
-                            <div class="work-img-overlay"></div>
+                    </div>
+                </article>
+                <article class="work-card" data-category="fullstack">
+                    <div class="work-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=75"
+                             alt="EntrepStore"
+                             loading="lazy">
+                        <div class="work-img-overlay"></div>
+                    </div>
+                    <div class="work-body">
+                        <div class="work-tags">
+                            <span>TypeScript</span>
+                            <span>React</span>
+                            <span>Express</span>
                         </div>
-                        <div class="work-body">
-                            <div class="work-tags">
-                                <span>TypeScript</span>
-                                <span>React</span>
-                                <span>Express</span>
-                            </div>
-                            <h3>EntrepStore (E-Shop)</h3>
-                            <p>Full-stack e-commerce platform for micro businesses. Admin dashboard, product management, sales analytics, and SQLite backend.</p>
-                            <div class="work-links">
-                                <a href="https://github.com/IrunguPeter/E-shop" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-github"></i> Source
-                                </a>
-                            </div>
+                        <h3>EntrepStore (E-Shop)</h3>
+                        <p>Full-stack e-commerce platform for micro businesses. Admin dashboard, product management, sales analytics, and SQLite backend.</p>
+                        <div class="work-links">
+                            <a href="https://github.com/IrunguPeter/E-shop" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i> Source
+                            </a>
                         </div>
-                    </article>
-                    <article class="work-card">
-                        <div class="work-img">
-                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=75"
-                                 alt="cashsasa"
-                                 loading="lazy">
-                            <div class="work-img-overlay"></div>
+                    </div>
+                </article>
+                <article class="work-card" data-category="python">
+                    <div class="work-img">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=75"
+                             alt="cashsasa"
+                             loading="lazy">
+                        <div class="work-img-overlay"></div>
+                    </div>
+                    <div class="work-body">
+                        <div class="work-tags">
+                            <span>Python</span>
+                            <span>Web</span>
                         </div>
-                        <div class="work-body">
-                            <div class="work-tags">
-                                <span>Python</span>
-                                <span>Web</span>
-                            </div>
-                            <h3>cashsasa</h3>
-                            <p>An advertising platform that rewards users through commissions and referrals. Built with Python for the backend.</p>
-                            <div class="work-links">
-                                <a href="https://github.com/IrunguPeter/cashsasa" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-github"></i> Source
-                                </a>
-                            </div>
+                        <h3>cashsasa</h3>
+                        <p>An advertising platform that rewards users through commissions and referrals. Built with Python for the backend.</p>
+                        <div class="work-links">
+                            <a href="https://github.com/IrunguPeter/cashsasa" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i> Source
+                            </a>
                         </div>
-                    </article>
-                    <article class="work-card">
-                        <div class="work-img">
-                            <img src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?w=600&q=75"
-                                 alt="Python Game"
-                                 loading="lazy">
-                            <div class="work-img-overlay"></div>
+                    </div>
+                </article>
+                <article class="work-card" data-category="python">
+                    <div class="work-img">
+                        <img src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?w=600&q=75"
+                             alt="Python Game"
+                             loading="lazy">
+                        <div class="work-img-overlay"></div>
+                    </div>
+                    <div class="work-body">
+                        <div class="work-tags">
+                            <span>Python</span>
+                            <span>Game</span>
                         </div>
-                        <div class="work-body">
-                            <div class="work-tags">
-                                <span>Python</span>
-                                <span>Game</span>
-                            </div>
-                            <h3>Python Game</h3>
-                            <p>A fun interactive game built in Python, demonstrating core programming concepts, game loops, and player mechanics.</p>
-                            <div class="work-links">
-                                <a href="https://github.com/IrunguPeter/python-game" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-github"></i> Source
-                                </a>
-                            </div>
+                        <h3>Python Game</h3>
+                        <p>A fun interactive game built in Python, demonstrating core programming concepts, game loops, and player mechanics.</p>
+                        <div class="work-links">
+                            <a href="https://github.com/IrunguPeter/python-game" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i> Source
+                            </a>
                         </div>
-                    </article>
-                    <article class="work-card">
-                        <div class="work-img">
-                            <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=600&q=75"
-                                 alt="Todoist Bot"
-                                 loading="lazy">
-                            <div class="work-img-overlay"></div>
+                    </div>
+                </article>
+                <article class="work-card" data-category="python">
+                    <div class="work-img">
+                        <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=600&q=75"
+                             alt="Todoist Bot"
+                             loading="lazy">
+                        <div class="work-img-overlay"></div>
+                    </div>
+                    <div class="work-body">
+                        <div class="work-tags">
+                            <span>Python</span>
+                            <span>Automation</span>
                         </div>
-                        <div class="work-body">
-                            <div class="work-tags">
-                                <span>Python</span>
-                                <span>Automation</span>
-                            </div>
-                            <h3>Todoist Bot</h3>
-                            <p>Automation bot that streamlines data entry into Todoist, making task management faster and more efficient through automation.</p>
-                            <div class="work-links">
-                                <a href="https://github.com/IrunguPeter/Todoist_bot" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-github"></i> Source
-                                </a>
-                            </div>
+                        <h3>Todoist Bot</h3>
+                        <p>Automation bot that streamlines data entry into Todoist, making task management faster and more efficient through automation.</p>
+                        <div class="work-links">
+                            <a href="https://github.com/IrunguPeter/Todoist_bot" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i> Source
+                            </a>
                         </div>
-                    </article>
-                </div>
-                <button class="carousel-btn carousel-prev" id="prevBtn" aria-label="Previous">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="carousel-btn carousel-next" id="nextBtn" aria-label="Next">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <div class="carousel-dots" id="carouselDots"></div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>

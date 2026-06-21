@@ -1,5 +1,54 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    /* ===== Custom Cursor Follower ===== */
+    const follower = document.querySelector('.cursor-follower');
+    let mouseX = 0, mouseY = 0;
+    let followerX = 0, followerY = 0;
+
+    // Track mouse movement
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    }, { passive: true });
+
+    // Smooth lerp loop
+    function updateFollower() {
+        const dx = mouseX - followerX;
+        const dy = mouseY - followerY;
+        
+        followerX += dx * 0.15;
+        followerY += dy * 0.15;
+        
+        if (follower) {
+            follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) translate(-50%, -50%)`;
+        }
+        
+        requestAnimationFrame(updateFollower);
+    }
+    updateFollower();
+
+    // Hover states for interactive elements
+    function addHoverListeners() {
+        const hoverables = document.querySelectorAll('a, button, input, textarea, .work-card, .theme-btn, .filter-btn');
+        hoverables.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                if (follower) follower.classList.add('hovering');
+            });
+            el.addEventListener('mouseleave', () => {
+                if (follower) follower.classList.remove('hovering');
+            });
+        });
+    }
+    addHoverListeners();
+
+    // Clicking states
+    document.addEventListener('mousedown', () => {
+        if (follower) follower.classList.add('clicking');
+    });
+    document.addEventListener('mouseup', () => {
+        if (follower) follower.classList.remove('clicking');
+    });
+
     /* ===== Theme Toggle ===== */
     const themeBtn = document.getElementById('themeToggle');
     const icon = themeBtn.querySelector('i');
@@ -44,8 +93,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleScroll() {
         const scrollY = window.scrollY;
 
-        // Navbar Effect
+        // Navbar Effect (acts as fallback if scroll-timeline is unsupported)
         navbar.classList.toggle('scrolled', scrollY > 50);
+
+        // Scroll Progress Bar Fallback (Firefox, etc.)
+        const progressEl = document.getElementById('scrollProgress');
+        if (progressEl && !CSS.supports('animation-timeline', 'scroll()')) {
+            const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+            if (scrollable > 0) {
+                const percent = scrollY / scrollable;
+                progressEl.style.transform = `scaleX(${percent})`;
+            }
+        }
 
         // Scroll Spy
         let currentId = '';
@@ -234,64 +293,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ===== Carousel ===== */
-    const track = document.getElementById('carouselTrack');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const dotsContainer = document.getElementById('carouselDots');
-    const cards = track.querySelectorAll('.work-card');
-    let currentIndex = 0;
+    /* ===== Projects Grid Filtering ===== */
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.work-card');
 
-    cards.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(i));
-        dotsContainer.appendChild(dot);
-    });
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all filter buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
 
-    function goToSlide(index) {
-        currentIndex = index;
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        dotsContainer.querySelectorAll('button').forEach((d, i) => {
-            d.classList.toggle('active', i === currentIndex);
+            const filterValue = button.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                
+                if (filterValue === 'all' || cardCategory === filterValue) {
+                    if (card._transitionHandler) {
+                        card.removeEventListener('transitionend', card._transitionHandler);
+                        card._transitionHandler = null;
+                    }
+                    card.classList.remove('hidden');
+                    // Force reflow
+                    void card.offsetWidth;
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1) translateY(0)';
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9) translateY(20px)';
+                    
+                    if (card._transitionHandler) {
+                        card.removeEventListener('transitionend', card._transitionHandler);
+                    }
+                    
+                    card._transitionHandler = function handleTransitionEnd(e) {
+                        if (e.propertyName === 'opacity') {
+                            card.classList.add('hidden');
+                            card.removeEventListener('transitionend', card._transitionHandler);
+                            card._transitionHandler = null;
+                        }
+                    };
+                    card.addEventListener('transitionend', card._transitionHandler);
+                }
+            });
         });
-    }
-
-    prevBtn.addEventListener('click', () => {
-        currentIndex = currentIndex > 0 ? currentIndex - 1 : cards.length - 1;
-        goToSlide(currentIndex);
     });
-
-    nextBtn.addEventListener('click', () => {
-        currentIndex = currentIndex < cards.length - 1 ? currentIndex + 1 : 0;
-        goToSlide(currentIndex);
-    });
-
-    document.addEventListener('keydown', e => {
-        if (e.key === 'ArrowLeft') prevBtn.click();
-        if (e.key === 'ArrowRight') nextBtn.click();
-    });
-
-    /* ===== Touch Swipe for Carousel ===== */
-    let startX = 0;
-    let isDragging = false;
-
-    track.addEventListener('touchstart', e => {
-        startX = e.touches[0].clientX;
-        isDragging = true;
-    }, { passive: true });
-
-    track.addEventListener('touchend', e => {
-        if (!isDragging) return;
-        const endX = e.changedTouches[0].clientX;
-        const diff = startX - endX;
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) nextBtn.click();
-            else prevBtn.click();
-        }
-        isDragging = false;
-    }, { passive: true });
 
     /* ===== Smooth anchor scrolling ===== */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

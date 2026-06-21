@@ -107,7 +107,70 @@ img {
 
 /* ===== CURSOR FOLLOWER ===== */
 .cursor-follower {
-    display: none;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    will-change: transform, width, height, background-color, border-color;
+    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+                height 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+                background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+                border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    display: block;
+}
+
+/* Cursor follower states */
+.cursor-follower.hovering {
+    width: 50px;
+    height: 50px;
+    background-color: var(--accent-light);
+    border-color: var(--accent-hover);
+}
+
+.cursor-follower.clicking {
+    transform: translate(-50%, -50%) scale(0.8);
+    background-color: var(--accent-glow);
+}
+
+/* Hide cursor follower on devices with no hover capability */
+@media (hover: none) and (pointer: coarse) {
+    .cursor-follower {
+        display: none !important;
+    }
+}
+
+/* ===== SCROLL PROGRESS BAR ===== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(to right, var(--accent), #a78bfa);
+    z-index: 10100;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+        @keyframes grow-progress {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+        .scroll-progress {
+            animation: grow-progress auto linear;
+            animation-timeline: scroll(block root);
+        }
+    }
 }
 
 /* ===== NOISE OVERLAY ===== */
@@ -216,6 +279,25 @@ img {
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
     padding: var(--space-2) 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    @supports ((animation-timeline: scroll()) and (animation-range: 0% 100%)) {
+        @keyframes nav-shrink {
+            to {
+                background: var(--nav-bg);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border-bottom: 1px solid var(--border);
+                padding: var(--space-2) 0;
+            }
+        }
+        .nav {
+            animation: nav-shrink auto linear both;
+            animation-timeline: scroll(block root);
+            animation-range: 0px 80px;
+        }
+    }
 }
 
 .nav-inner {
@@ -632,35 +714,81 @@ img {
     z-index: 1;
 }
 
-/* Carousel */
-.carousel-wrap {
-    position: relative;
-    max-width: 750px;
-    margin: 0 auto;
-    overflow: hidden;
+/* Work Filters */
+.work-filters {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: var(--space-8);
+    flex-wrap: wrap;
 }
 
-.carousel-track {
-    display: flex;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.filter-btn {
+    padding: var(--space-2) var(--space-5);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1), transform 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-6);
+    transition: all 0.4s ease;
 }
 
 .work-card {
-    min-width: 100%;
     background: var(--card-bg);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border-radius: var(--radius-lg);
     overflow: hidden;
     border: 1px solid var(--glass-border);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease, transform 0.3s ease;
     position: relative;
     box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    will-change: transform, opacity;
+}
+
+.work-card.hidden {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
 .work-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 24px 64px -16px rgba(99, 102, 241, 0.2);
+    box-shadow: 0 24px 64px -16px rgba(99, 102, 241, 0.25);
     border-color: var(--accent);
 }
 
@@ -696,6 +824,9 @@ img {
 .work-body {
     padding: 1.5rem;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .work-tags {
@@ -726,12 +857,13 @@ img {
     font-size: 0.85rem;
     color: var(--text-secondary);
     line-height: 1.7;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .work-links {
     display: flex;
     gap: 1.2rem;
+    margin-top: auto;
 }
 
 .work-links a {
@@ -747,61 +879,6 @@ img {
 .work-links a:hover {
     gap: 0.6rem;
     color: var(--accent-hover);
-}
-
-/* Carousel controls */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    border: 2px solid var(--border);
-    background: var(--card-bg);
-    color: var(--text);
-    cursor: pointer;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    z-index: 10;
-    backdrop-filter: blur(12px);
-}
-
-.carousel-btn:hover {
-    background: var(--accent);
-    color: #fff;
-    border-color: var(--accent);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-prev { left: -23px; }
-.carousel-next { right: -23px; }
-
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
-}
-
-.carousel-dots button {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: none;
-    background: var(--border);
-    cursor: pointer;
-    transition: all 0.4s ease;
-    padding: 0;
-}
-
-.carousel-dots button.active {
-    background: var(--accent);
-    width: 32px;
-    border-radius: 5px;
 }
 
 /* ===== ABOUT ===== */
@@ -1326,9 +1403,6 @@ img {
 
     .hero-title { font-size: 2.4rem; letter-spacing: -1px; }
     .hero-desc { font-size: 1rem; }
-
-    .carousel-prev { left: 8px; }
-    .carousel-next { right: 8px; }
 
     .contact-card { padding: var(--space-4); }
     .form-row { grid-template-columns: 1fr; }
