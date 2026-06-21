@@ -1,3 +1,8 @@
+// ===== CONFIG =====
+const CONFIG = {
+    web3FormsKey: '691b935c-2b39-41cd-9894-2b117f8b9ff4'
+};
+
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ===== Custom Cursor Follower ===== */
@@ -199,6 +204,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         cur = Math.min(cur + step, target);
                         c.textContent = cur + '+';
                         requestAnimationFrame(tick);
+                    } else {
+                        c.textContent = target + '+';
                     }
                 }
                 tick();
@@ -261,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                access_key: '691b935c-2b39-41cd-9894-2b117f8b9ff4',
+                access_key: CONFIG.web3FormsKey,
                 name: name.value.trim(),
                 email: email.value.trim(),
                 subject: subject.value.trim(),

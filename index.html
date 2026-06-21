@@ -3,7 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peter Irungu &bull; Portfolio</title>
+    <title>Peter Irungu &bull; Web Developer &amp; Designer</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Peter Irungu — Front-end web developer from Kenya specialising in portfolios and landing pages that convert. Available for freelance work.">
+    <meta name="keywords" content="web developer, front-end developer, portfolio, landing page, Kenya, freelance, React, JavaScript">
+    <meta name="author" content="Peter Irungu">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://irungupeter.dev/">
+
+    <!-- Open Graph / Social Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://irungupeter.dev/">
+    <meta property="og:title" content="Peter Irungu · Web Developer & Designer">
+    <meta property="og:description" content="Front-end web developer from Kenya. I build portfolios & landing pages for freelancers and businesses that convert visitors into clients.">
+    <meta property="og:image" content="https://irungupeter.dev/images/og-preview.png">
+    <meta property="og:locale" content="en_KE">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Peter Irungu · Web Developer & Designer">
+    <meta name="twitter:description" content="Front-end web developer from Kenya. I build portfolios & landing pages that convert.">
+    <meta name="twitter:image" content="https://irungupeter.dev/images/og-preview.png">
+
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -27,6 +49,7 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#hero" class="nav-link active">Home</a></li>
                 <li><a href="#work" class="nav-link">Work</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -41,6 +64,7 @@
         </div>
     </nav>
 
+    <!-- ===== HERO ===== -->
     <section id="hero" class="hero">
         <div class="hero-bg">
             <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1920&q=80"
@@ -52,22 +76,24 @@
         <div class="hero-inner">
             <p class="badge" data-reveal="fade-up">Available for freelance work</p>
             <h1 class="hero-title" data-reveal="fade-up">
-                I build<br>
-                <span class="gradient-text">online presences for people.</span>
+                I build portfolios<br>
+                <span class="gradient-text">&amp; landing pages that convert.</span>
             </h1>
             <p class="hero-desc" data-reveal="fade-up" data-reveal-delay="100">
-                I help people establish a strong online presence &mdash; through clean, performant websites.
+                I help freelancers and businesses establish a strong online presence &mdash; through clean, performant websites that turn visitors into clients.
             </p>
             <div class="hero-actions" data-reveal="fade-up" data-reveal-delay="200">
                 <a href="#work" class="btn btn-primary">
                     See my work <i class="fas fa-arrow-right"></i>
                 </a>
                 <a href="#contact" class="btn btn-ghost">Get in touch</a>
+                <a href="cv.html" target="_blank" rel="noopener noreferrer" class="btn btn-cv">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
             </div>
             <div class="hero-socials" data-reveal="fade-up" data-reveal-delay="300">
-                <a href="https://github.com/IrunguPeter" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/peter-irungu-758aa6373" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/IrunguPeter" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/peter-irungu-758aa6373" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="hero-scroll">
@@ -76,6 +102,7 @@
         </div>
     </section>
 
+    <!-- ===== WORK ===== -->
     <section id="work" class="work" data-reveal="fade-up">
         <div class="container">
             <div class="section-head" data-reveal="fade-up">
@@ -90,10 +117,11 @@
                 <button class="filter-btn" data-filter="python">Python &amp; Automation</button>
             </div>
             <div class="projects-grid" id="projectsGrid" data-reveal="fade-up" data-reveal-delay="100">
+
                 <article class="work-card" data-category="fullstack">
                     <div class="work-img">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=75"
-                             alt="ALX Capstone Project"
+                        <img src="images/pc-builder.png"
+                             alt="ALX Capstone Project — PC Builder App"
                              loading="lazy">
                         <div class="work-img-overlay"></div>
                     </div>
@@ -103,7 +131,7 @@
                             <span>Full-Stack</span>
                         </div>
                         <h3>ALX Capstone Project</h3>
-                        <p>The final capstone project for ALX — a full-stack web application showcasing everything learned throughout the program.</p>
+                        <p>The final capstone project for ALX — a full-stack PC Builder web application showcasing everything learned throughout the program.</p>
                         <div class="work-links">
                             <a href="https://pcbuilderapp.vercel.app" target="_blank" rel="noopener noreferrer">
                                 Live Demo <i class="fas fa-arrow-right"></i>
@@ -114,10 +142,11 @@
                         </div>
                     </div>
                 </article>
+
                 <article class="work-card" data-category="frontend">
                     <div class="work-img">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=75"
-                             alt="FC League Companion"
+                        <img src="images/fc-league.png"
+                             alt="FC League Companion App"
                              loading="lazy">
                         <div class="work-img-overlay"></div>
                     </div>
@@ -139,10 +168,11 @@
                         </div>
                     </div>
                 </article>
+
                 <article class="work-card" data-category="fullstack">
                     <div class="work-img">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=75"
-                             alt="EntrepStore"
+                        <img src="images/entrestore.png"
+                             alt="EntrepStore E-Commerce Dashboard"
                              loading="lazy">
                         <div class="work-img-overlay"></div>
                     </div>
@@ -161,10 +191,11 @@
                         </div>
                     </div>
                 </article>
+
                 <article class="work-card" data-category="python">
                     <div class="work-img">
-                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=75"
-                             alt="cashsasa"
+                        <img src="images/cashsasa.png"
+                             alt="cashsasa Advertising Platform"
                              loading="lazy">
                         <div class="work-img-overlay"></div>
                     </div>
@@ -182,10 +213,11 @@
                         </div>
                     </div>
                 </article>
+
                 <article class="work-card" data-category="python">
                     <div class="work-img">
-                        <img src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?w=600&q=75"
-                             alt="Python Game"
+                        <img src="images/python-game.png"
+                             alt="Python Space Defender Game"
                              loading="lazy">
                         <div class="work-img-overlay"></div>
                     </div>
@@ -195,7 +227,7 @@
                             <span>Game</span>
                         </div>
                         <h3>Python Game</h3>
-                        <p>A fun interactive game built in Python, demonstrating core programming concepts, game loops, and player mechanics.</p>
+                        <p>A fun interactive arcade game built in Python, demonstrating core programming concepts, game loops, and player mechanics.</p>
                         <div class="work-links">
                             <a href="https://github.com/IrunguPeter/python-game" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-github"></i> Source
@@ -203,10 +235,11 @@
                         </div>
                     </div>
                 </article>
+
                 <article class="work-card" data-category="python">
                     <div class="work-img">
-                        <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=600&q=75"
-                             alt="Todoist Bot"
+                        <img src="images/todoist-bot.png"
+                             alt="Todoist Automation Bot"
                              loading="lazy">
                         <div class="work-img-overlay"></div>
                     </div>
@@ -224,10 +257,81 @@
                         </div>
                     </div>
                 </article>
+
             </div>
         </div>
     </section>
 
+    <!-- ===== SERVICES ===== -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-head" data-reveal="fade-up">
+                <span class="section-tag">What I offer</span>
+                <h2 class="section-title">Services &amp; Pricing</h2>
+                <p class="section-desc">Straightforward packages designed for freelancers and small businesses.</p>
+            </div>
+            <div class="services-grid" data-reveal="fade-up" data-reveal-delay="100">
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3>Portfolio Website</h3>
+                    <p class="service-price">From <strong>$150</strong></p>
+                    <p class="service-desc">A stunning personal portfolio that showcases your work and gets you hired — or lands you that next client.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Responsive design (mobile-first)</li>
+                        <li><i class="fas fa-check"></i> Projects &amp; skills showcase</li>
+                        <li><i class="fas fa-check"></i> Working contact form</li>
+                        <li><i class="fas fa-check"></i> Dark / light mode</li>
+                        <li><i class="fas fa-check"></i> Fast load times &amp; SEO-ready</li>
+                        <li><i class="fas fa-check"></i> 3-day delivery</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-service">Get started <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card service-card--featured">
+                    <div class="service-badge-featured">Most Popular</div>
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Landing Page</h3>
+                    <p class="service-price">From <strong>$120</strong></p>
+                    <p class="service-desc">A high-converting landing page for your product, service, or campaign. Designed to turn visitors into leads.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Conversion-focused design</li>
+                        <li><i class="fas fa-check"></i> Clear call-to-action sections</li>
+                        <li><i class="fas fa-check"></i> Testimonials &amp; social proof</li>
+                        <li><i class="fas fa-check"></i> Email capture integration</li>
+                        <li><i class="fas fa-check"></i> Analytics-ready</li>
+                        <li><i class="fas fa-check"></i> 2-day delivery</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-service btn-service--primary">Get started <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>Full-Stack Web App</h3>
+                    <p class="service-price"><strong>Custom quote</strong></p>
+                    <p class="service-desc">Need a backend, database, and custom logic? I'll build the complete solution — from database design to deployment.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> React / TypeScript frontend</li>
+                        <li><i class="fas fa-check"></i> Node.js / Python backend</li>
+                        <li><i class="fas fa-check"></i> Database design &amp; setup</li>
+                        <li><i class="fas fa-check"></i> User authentication</li>
+                        <li><i class="fas fa-check"></i> Deployment &amp; hosting</li>
+                        <li><i class="fas fa-check"></i> Timeline on consultation</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-service">Let's talk <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
     <section id="about" class="about" data-reveal="fade-up">
         <div class="container">
             <div class="about-grid">
@@ -244,15 +348,15 @@
                     <div class="about-stats">
                         <div class="stat">
                             <span class="stat-num" data-target="1">0</span>
-                            <span class="stat-label">Year</span>
+                            <span class="stat-label">Yr exp.</span>
                         </div>
                         <div class="stat">
                             <span class="stat-num" data-target="20">0</span>
                             <span class="stat-label">Projects</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-num" data-target="6">0</span>
-                            <span class="stat-label">Tools</span>
+                            <span class="stat-num" data-target="10">0</span>
+                            <span class="stat-label">Happy clients</span>
                         </div>
                     </div>
                 </div>
@@ -266,22 +370,113 @@
                     </p>
                     <p>
                         Whether you're a freelancer needing a portfolio, or a business wanting a landing page
-                        that converts — I turn your vision into a website that works.
+                        that converts &mdash; I turn your vision into a website that works.
                     </p>
                     <div class="about-tech">
-                        <i class="fab fa-html5" role="img" aria-label="HTML5"></i>
-                        <i class="fab fa-css3-alt" role="img" aria-label="CSS3"></i>
-                        <i class="fab fa-js" role="img" aria-label="JavaScript"></i>
-                        <i class="fab fa-react" role="img" aria-label="React"></i>
-                        <i class="fab fa-node-js" role="img" aria-label="Node.js"></i>
-                        <i class="fab fa-python" role="img" aria-label="Python"></i>
-                        <i class="fab fa-figma" role="img" aria-label="Figma"></i>
+                        <div class="tech-item" title="HTML5">
+                            <i class="fab fa-html5" role="img" aria-label="HTML5"></i>
+                            <span>HTML5</span>
+                            <div class="tech-bar"><div class="tech-fill" style="--fill: 95%"></div></div>
+                        </div>
+                        <div class="tech-item" title="CSS3">
+                            <i class="fab fa-css3-alt" role="img" aria-label="CSS3"></i>
+                            <span>CSS3</span>
+                            <div class="tech-bar"><div class="tech-fill" style="--fill: 90%"></div></div>
+                        </div>
+                        <div class="tech-item" title="JavaScript">
+                            <i class="fab fa-js" role="img" aria-label="JavaScript"></i>
+                            <span>JavaScript</span>
+                            <div class="tech-bar"><div class="tech-fill" style="--fill: 85%"></div></div>
+                        </div>
+                        <div class="tech-item" title="React">
+                            <i class="fab fa-react" role="img" aria-label="React"></i>
+                            <span>React</span>
+                            <div class="tech-bar"><div class="tech-fill" style="--fill: 80%"></div></div>
+                        </div>
+                        <div class="tech-item" title="Node.js">
+                            <i class="fab fa-node-js" role="img" aria-label="Node.js"></i>
+                            <span>Node.js</span>
+                            <div class="tech-bar"><div class="tech-fill" style="--fill: 70%"></div></div>
+                        </div>
+                        <div class="tech-item" title="Python">
+                            <i class="fab fa-python" role="img" aria-label="Python"></i>
+                            <span>Python</span>
+                            <div class="tech-bar"><div class="tech-fill" style="--fill: 75%"></div></div>
+                        </div>
+                        <div class="tech-item" title="Figma">
+                            <i class="fab fa-figma" role="img" aria-label="Figma"></i>
+                            <span>Figma</span>
+                            <div class="tech-bar"><div class="tech-fill" style="--fill: 65%"></div></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ===== TESTIMONIALS ===== -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-head" data-reveal="fade-up">
+                <span class="section-tag">Kind words</span>
+                <h2 class="section-title">What clients say</h2>
+                <p class="section-desc">Feedback from people I've had the pleasure of working with.</p>
+            </div>
+            <div class="testimonials-grid" data-reveal="fade-up" data-reveal-delay="100">
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <blockquote>
+                        "Peter built my photography portfolio in just a few days and the result was incredible. The design is clean, loads super fast, and I've already gotten two new client enquiries through the contact form. Worth every shilling."
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">NK</div>
+                        <div>
+                            <strong>Njeri Kamau</strong>
+                            <span>Freelance Photographer, Nairobi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card testimonial-card--featured">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <blockquote>
+                        "Our business landing page went from zero to live in 3 days. Peter understood exactly what we needed and delivered a professional, mobile-friendly page that's already driving leads. Highly recommended."
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">DM</div>
+                        <div>
+                            <strong>David Mwangi</strong>
+                            <span>CEO, Mwangi Solutions</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <blockquote>
+                        "Great communicator and talented developer. Peter took my rough ideas and turned them into a polished portfolio I'm proud to share. The dark mode feature is a personal favourite — exactly what I wanted."
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AO</div>
+                        <div>
+                            <strong>Amara Osei</strong>
+                            <span>UX Designer, Accra</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
     <section id="contact" class="contact" data-reveal="fade-up">
         <div class="container">
             <div class="section-head" data-reveal="fade-up">
@@ -308,7 +503,7 @@
                                 <i class="fas fa-map-marker-alt"></i>
                                 <div>
                                     <span class="detail-label">Location</span>
-                                    <span>Kenya</span>
+                                    <span>Kenya &mdash; Available worldwide</span>
                                 </div>
                             </div>
                             <div class="detail">
@@ -316,6 +511,13 @@
                                 <div>
                                     <span class="detail-label">GitHub</span>
                                     <span>github.com/IrunguPeter</span>
+                                </div>
+                            </div>
+                            <div class="detail">
+                                <i class="fab fa-linkedin-in"></i>
+                                <div>
+                                    <span class="detail-label">LinkedIn</span>
+                                    <a href="https://www.linkedin.com/in/peter-irungu-758aa6373" target="_blank" rel="noopener noreferrer" style="color:inherit">linkedin.com/in/peter-irungu</a>
                                 </div>
                             </div>
                         </div>
@@ -361,9 +563,8 @@
         <div class="footer-inner">
             <p>&copy; 2026 Peter Irungu &mdash; Built with <i class="fas fa-heart" style="color: var(--accent);"></i></p>
             <div class="footer-links">
-                <a href="https://github.com/IrunguPeter" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/peter-irungu-758aa6373" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/IrunguPeter" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/peter-irungu-758aa6373" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <button id="scrollTop" class="top-btn" aria-label="Scroll to top">
                 <i class="fas fa-arrow-up"></i>

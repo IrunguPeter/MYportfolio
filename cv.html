@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peter Irungu &mdash; CV / Résumé</title>
+    <meta name="robots" content="noindex">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --accent: #6366f1;
+            --accent-light: rgba(99, 102, 241, 0.08);
+            --text: #0f172a;
+            --text-secondary: #475569;
+            --border: #e2e8f0;
+            --bg: #f8fafc;
+            --card: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+        }
+
+        /* ===== Top bar ===== */
+        .topbar {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .topbar a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .topbar a:hover { color: var(--accent); }
+
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 0.55rem 1.2rem;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .print-btn:hover { background: #4f46e5; transform: translateY(-1px); }
+
+        /* ===== CV wrapper ===== */
+        .cv-wrapper {
+            max-width: 780px;
+            margin: 2rem auto;
+            padding: 0 1.5rem 4rem;
+        }
+
+        .cv {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.06);
+        }
+
+        /* ===== Header ===== */
+        .cv-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            padding: 2.5rem 3rem;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cv-header::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.2);
+        }
+
+        .cv-header::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: 40%;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: rgba(167, 139, 250, 0.15);
+        }
+
+        .cv-header-inner {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cv-name {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .cv-role {
+            font-size: 1rem;
+            color: #a78bfa;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .cv-tagline {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.65);
+            max-width: 380px;
+            line-height: 1.65;
+        }
+
+        .cv-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: flex-end;
+        }
+
+        .cv-contacts a,
+        .cv-contacts span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .cv-contacts a:hover { color: #fff; }
+        .cv-contacts i { font-size: 0.8rem; color: #a78bfa; }
+
+        /* ===== Body ===== */
+        .cv-body {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+        }
+
+        .cv-sidebar {
+            background: #f8fafc;
+            border-right: 1px solid var(--border);
+            padding: 2rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .cv-main {
+            padding: 2rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* ===== Section heading ===== */
+        .cv-section-title {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cv-section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ===== Skills ===== */
+        .skill-item {
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-level {
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .skill-bar {
+            height: 5px;
+            background: var(--border);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #a78bfa);
+            border-radius: 99px;
+        }
+
+        /* ===== Tools ===== */
+        .tools-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tool-tag {
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            letter-spacing: 0.03em;
+        }
+
+        /* ===== Languages ===== */
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .lang-level {
+            color: var(--text-secondary);
+        }
+
+        /* ===== Experience / Education ===== */
+        .cv-entry {
+            border-left: 2px solid var(--border);
+            padding-left: 1.25rem;
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .cv-entry:last-child { margin-bottom: 0; }
+
+        .cv-entry::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0.4rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .entry-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.15rem;
+        }
+
+        .entry-org {
+            font-size: 0.82rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .entry-date {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .entry-desc {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .entry-desc ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .entry-desc ul li::before {
+            content: '→';
+            color: var(--accent);
+            margin-right: 0.4rem;
+            font-size: 0.75rem;
+        }
+
+        /* ===== Projects mini ===== */
+        .mini-projects {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .mini-project {
+            padding: 0.75rem 1rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .mini-project-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .mini-project-desc {
+            font-size: 0.77rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .mini-project-link {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .mini-project-link:hover { text-decoration: underline; }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            body { background: #fff; }
+            .topbar { display: none; }
+            .cv-wrapper { margin: 0; padding: 0; max-width: 100%; }
+            .cv {
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .cv-header { padding: 2rem 1.5rem; }
+            .cv-header-inner { flex-direction: column; }
+            .cv-contacts { align-items: flex-start; }
+            .cv-body { grid-template-columns: 1fr; }
+            .cv-sidebar { border-right: none; border-bottom: 1px solid var(--border); }
+            .cv-main { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topbar">
+        <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+        <button class="print-btn" onclick="window.print()">
+            <i class="fas fa-download"></i> Download / Print PDF
+        </button>
+    </div>
+
+    <div class="cv-wrapper">
+        <div class="cv">
+
+            <!-- Header -->
+            <div class="cv-header">
+                <div class="cv-header-inner">
+                    <div>
+                        <h1 class="cv-name">Peter Irungu</h1>
+                        <p class="cv-role">Front-End Web Developer &amp; Designer</p>
+                        <p class="cv-tagline">I build portfolios and landing pages that help freelancers and businesses establish a strong online presence. Clean, fast, and conversion-focused.</p>
+                    </div>
+                    <div class="cv-contacts">
+                        <a href="mailto:irungupeter204@gmail.com">
+                            <i class="fas fa-envelope"></i> irungupeter204@gmail.com
+                        </a>
+                        <a href="https://github.com/IrunguPeter" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> github.com/IrunguPeter
+                        </a>
+                        <a href="https://www.linkedin.com/in/peter-irungu-758aa6373" target="_blank" rel="noopener">
+                            <i class="fab fa-linkedin-in"></i> linkedin.com/in/peter-irungu
+                        </a>
+                        <span>
+                            <i class="fas fa-map-marker-alt"></i> Kenya &mdash; Available worldwide
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="cv-body">
+
+                <!-- Sidebar -->
+                <aside class="cv-sidebar">
+
+                    <!-- Skills -->
+                    <div>
+                        <h2 class="cv-section-title">Skills</h2>
+                        <div class="skill-item">
+                            <div class="skill-header"><span>HTML / CSS</span><span class="skill-level">Expert</span></div>
+                            <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header"><span>JavaScript (ES6+)</span><span class="skill-level">Advanced</span></div>
+                            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header"><span>React / TypeScript</span><span class="skill-level">Advanced</span></div>
+                            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header"><span>Python</span><span class="skill-level">Intermediate</span></div>
+                            <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header"><span>Node.js / Express</span><span class="skill-level">Intermediate</span></div>
+                            <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header"><span>Figma / UI Design</span><span class="skill-level">Intermediate</span></div>
+                            <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Tools -->
+                    <div>
+                        <h2 class="cv-section-title">Tools</h2>
+                        <div class="tools-list">
+                            <span class="tool-tag">Git / GitHub</span>
+                            <span class="tool-tag">VS Code</span>
+                            <span class="tool-tag">Firebase</span>
+                            <span class="tool-tag">Vercel</span>
+                            <span class="tool-tag">SQLite</span>
+                            <span class="tool-tag">Figma</span>
+                            <span class="tool-tag">Postman</span>
+                            <span class="tool-tag">npm / Vite</span>
+                            <span class="tool-tag">REST APIs</span>
+                        </div>
+                    </div>
+
+                    <!-- Languages -->
+                    <div>
+                        <h2 class="cv-section-title">Languages</h2>
+                        <div class="lang-item"><span>English</span><span class="lang-level">Fluent</span></div>
+                        <div class="lang-item"><span>Swahili</span><span class="lang-level">Native</span></div>
+                    </div>
+
+                    <!-- Interests -->
+                    <div>
+                        <h2 class="cv-section-title">Interests</h2>
+                        <div class="tools-list">
+                            <span class="tool-tag">Web Performance</span>
+                            <span class="tool-tag">UI/UX Design</span>
+                            <span class="tool-tag">Automation</span>
+                            <span class="tool-tag">Open Source</span>
+                        </div>
+                    </div>
+
+                </aside>
+
+                <!-- Main -->
+                <main class="cv-main">
+
+                    <!-- Summary -->
+                    <div>
+                        <h2 class="cv-section-title">Profile</h2>
+                        <p style="font-size:0.88rem; color: #475569; line-height:1.75;">
+                            Front-end web developer from Nairobi, Kenya, with over a year of hands-on experience building responsive, performant websites. I specialise in portfolio sites and landing pages that help clients establish a credible online presence. Comfortable across the full stack — from React frontends to Python and Node.js backends — and passionate about clean code and great user experience.
+                        </p>
+                    </div>
+
+                    <!-- Experience -->
+                    <div>
+                        <h2 class="cv-section-title">Experience</h2>
+                        <div class="cv-entry">
+                            <p class="entry-title">Freelance Web Developer</p>
+                            <p class="entry-org">Self-employed</p>
+                            <p class="entry-date"><i class="far fa-calendar"></i> 2024 &mdash; Present &nbsp;&bull;&nbsp; Remote / Kenya</p>
+                            <div class="entry-desc">
+                                <ul>
+                                    <li>Designed and built portfolio and landing page websites for freelancers and small businesses</li>
+                                    <li>Delivered responsive, SEO-friendly sites with working contact forms and smooth animations</li>
+                                    <li>Maintained ongoing client relationships with post-launch support and updates</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="cv-entry">
+                            <p class="entry-title">ALX Software Engineering Student</p>
+                            <p class="entry-org">ALX Africa</p>
+                            <p class="entry-date"><i class="far fa-calendar"></i> 2023 &mdash; 2024 &nbsp;&bull;&nbsp; Remote</p>
+                            <div class="entry-desc">
+                                <ul>
+                                    <li>Completed intensive 12-month software engineering programme (C, Python, JavaScript, full-stack)</li>
+                                    <li>Built a full-stack PC Builder capstone project deployed on Vercel</li>
+                                    <li>Collaborated with peers on group projects using Git and agile practices</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div>
+                        <h2 class="cv-section-title">Education</h2>
+                        <div class="cv-entry">
+                            <p class="entry-title">ALX Software Engineering Programme</p>
+                            <p class="entry-org">ALX Africa</p>
+                            <p class="entry-date"><i class="far fa-calendar"></i> 2023 &mdash; 2024</p>
+                            <p class="entry-desc">Full-stack web development — C, Python, JavaScript, React, DevOps fundamentals.</p>
+                        </div>
+                        <div class="cv-entry">
+                            <p class="entry-title">Kenya Certificate of Secondary Education</p>
+                            <p class="entry-org">Kenya National Examinations Council</p>
+                            <p class="entry-date"><i class="far fa-calendar"></i> 2022</p>
+                            <p class="entry-desc">Completed secondary school education in Kenya.</p>
+                        </div>
+                    </div>
+
+                    <!-- Projects -->
+                    <div>
+                        <h2 class="cv-section-title">Notable Projects</h2>
+                        <div class="mini-projects">
+                            <div class="mini-project">
+                                <div>
+                                    <p class="mini-project-title">FC League Companion</p>
+                                    <p class="mini-project-desc">Real-time FIFA score tracker — React, TypeScript, Firebase. Google login, live standings, QR invites.</p>
+                                </div>
+                                <a href="https://fc-league-app.vercel.app" target="_blank" rel="noopener" class="mini-project-link">Live <i class="fas fa-external-link-alt" style="font-size:0.65rem"></i></a>
+                            </div>
+                            <div class="mini-project">
+                                <div>
+                                    <p class="mini-project-title">EntrepStore (E-Shop)</p>
+                                    <p class="mini-project-desc">Full-stack e-commerce dashboard for micro businesses. React + Express + SQLite with admin analytics.</p>
+                                </div>
+                                <a href="https://github.com/IrunguPeter/E-shop" target="_blank" rel="noopener" class="mini-project-link">GitHub <i class="fas fa-external-link-alt" style="font-size:0.65rem"></i></a>
+                            </div>
+                            <div class="mini-project">
+                                <div>
+                                    <p class="mini-project-title">cashsasa</p>
+                                    <p class="mini-project-desc">Python-backed advertising &amp; referral rewards platform for the Kenyan market.</p>
+                                </div>
+                                <a href="https://github.com/IrunguPeter/cashsasa" target="_blank" rel="noopener" class="mini-project-link">GitHub <i class="fas fa-external-link-alt" style="font-size:0.65rem"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </main>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
