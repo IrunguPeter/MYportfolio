@@ -28,7 +28,7 @@
 
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -118,7 +118,7 @@
             </div>
             <div class="projects-grid" id="projectsGrid" data-reveal="fade-up" data-reveal-delay="100">
 
-                <article class="work-card" data-category="fullstack">
+                <article class="work-card work-card--large" data-category="fullstack">
                     <div class="work-img">
                         <img src="images/pc-builder.png"
                              alt="ALX Capstone Project — PC Builder App"
@@ -214,7 +214,7 @@
                     </div>
                 </article>
 
-                <article class="work-card" data-category="python">
+                <article class="work-card work-card--large" data-category="python">
                     <div class="work-img">
                         <img src="images/python-game.png"
                              alt="Python Space Defender Game"
@@ -372,41 +372,55 @@
                         Whether you're a freelancer needing a portfolio, or a business wanting a landing page
                         that converts &mdash; I turn your vision into a website that works.
                     </p>
-                    <div class="about-tech">
-                        <div class="tech-item" title="HTML5">
-                            <i class="fab fa-html5" role="img" aria-label="HTML5"></i>
-                            <span>HTML5</span>
-                            <div class="tech-bar"><div class="tech-fill" style="--fill: 95%"></div></div>
+                    <div class="skills-grid">
+                        <div class="skill-group-card">
+                            <div class="skill-group-header">
+                                <i class="fas fa-laptop-code"></i>
+                                <h3>Frontend</h3>
+                            </div>
+                            <div class="skill-tags">
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>JavaScript</span>
+                                <span>React</span>
+                                <span>TypeScript</span>
+                            </div>
                         </div>
-                        <div class="tech-item" title="CSS3">
-                            <i class="fab fa-css3-alt" role="img" aria-label="CSS3"></i>
-                            <span>CSS3</span>
-                            <div class="tech-bar"><div class="tech-fill" style="--fill: 90%"></div></div>
+                        <div class="skill-group-card">
+                            <div class="skill-group-header">
+                                <i class="fas fa-server"></i>
+                                <h3>Backend</h3>
+                            </div>
+                            <div class="skill-tags">
+                                <span>Node.js</span>
+                                <span>Express</span>
+                                <span>Python</span>
+                                <span>SQLite</span>
+                                <span>Firebase</span>
+                            </div>
                         </div>
-                        <div class="tech-item" title="JavaScript">
-                            <i class="fab fa-js" role="img" aria-label="JavaScript"></i>
-                            <span>JavaScript</span>
-                            <div class="tech-bar"><div class="tech-fill" style="--fill: 85%"></div></div>
+                        <div class="skill-group-card">
+                            <div class="skill-group-header">
+                                <i class="fas fa-gamepad"></i>
+                                <h3>Games & Automation</h3>
+                            </div>
+                            <div class="skill-tags">
+                                <span>Pygame</span>
+                                <span>Automation Bots</span>
+                                <span>API Integrations</span>
+                            </div>
                         </div>
-                        <div class="tech-item" title="React">
-                            <i class="fab fa-react" role="img" aria-label="React"></i>
-                            <span>React</span>
-                            <div class="tech-bar"><div class="tech-fill" style="--fill: 80%"></div></div>
-                        </div>
-                        <div class="tech-item" title="Node.js">
-                            <i class="fab fa-node-js" role="img" aria-label="Node.js"></i>
-                            <span>Node.js</span>
-                            <div class="tech-bar"><div class="tech-fill" style="--fill: 70%"></div></div>
-                        </div>
-                        <div class="tech-item" title="Python">
-                            <i class="fab fa-python" role="img" aria-label="Python"></i>
-                            <span>Python</span>
-                            <div class="tech-bar"><div class="tech-fill" style="--fill: 75%"></div></div>
-                        </div>
-                        <div class="tech-item" title="Figma">
-                            <i class="fab fa-figma" role="img" aria-label="Figma"></i>
-                            <span>Figma</span>
-                            <div class="tech-bar"><div class="tech-fill" style="--fill: 65%"></div></div>
+                        <div class="skill-group-card">
+                            <div class="skill-group-header">
+                                <i class="fas fa-palette"></i>
+                                <h3>Design & Tools</h3>
+                            </div>
+                            <div class="skill-tags">
+                                <span>Figma</span>
+                                <span>Git & GitHub</span>
+                                <span>VS Code</span>
+                                <span>Responsive Layouts</span>
+                            </div>
                         </div>
                     </div>
                 </div>

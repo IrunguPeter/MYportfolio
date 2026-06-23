@@ -347,6 +347,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /* ===== Dynamic Card Spotlight Glow ===== */
+    const spotlightCards = document.querySelectorAll('.work-card, .service-card, .skill-group-card');
+    spotlightCards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
     /* ===== Smooth anchor scrolling ===== */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
