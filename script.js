@@ -312,20 +312,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ===== Work filters ===== */
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const workCards = document.querySelectorAll('.work-card');
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const filter = btn.dataset.filter;
-            workCards.forEach(card => {
-                card.classList.toggle('hidden', filter !== 'all' && card.dataset.category !== filter);
-            });
-        });
-    });
-
     /* ===== Smooth anchor scrolling ===== */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
