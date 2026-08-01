@@ -4,10 +4,10 @@
     --bg-alt: #f4f4f5;
     --text: #09090b;
     --text-secondary: #71717a;
-    --accent: #6366f1;
-    --accent-hover: #4f46e5;
-    --accent-light: rgba(99, 102, 241, 0.05);
-    --accent-glow: rgba(99, 102, 241, 0.15);
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --accent-light: rgba(37, 99, 235, 0.05);
+    --accent-glow: rgba(37, 99, 235, 0.15);
     --card-bg: rgba(255, 255, 255, 0.65);
     --card-bg-solid: #ffffff;
     --border: rgba(9, 9, 11, 0.05);
@@ -43,10 +43,10 @@
     --bg-alt: #0b0f19;
     --text: #f4f4f5;
     --text-secondary: #a1a1aa;
-    --accent: #818cf8;
-    --accent-hover: #6366f1;
-    --accent-light: rgba(129, 140, 248, 0.08);
-    --accent-glow: rgba(129, 140, 248, 0.25);
+    --accent: #60a5fa;
+    --accent-hover: #3b82f6;
+    --accent-light: rgba(96, 165, 250, 0.08);
+    --accent-glow: rgba(96, 165, 250, 0.25);
     --card-bg: rgba(11, 15, 25, 0.5);
     --card-bg-solid: #0b0f19;
     --border: rgba(244, 244, 245, 0.06);
@@ -159,7 +159,7 @@ img {
     left: 0;
     height: 3px;
     width: 100%;
-    background: linear-gradient(to right, var(--accent), #a78bfa);
+    background: linear-gradient(to right, var(--accent), #38bdf8);
     z-index: 10100;
     transform-origin: 0 50%;
     transform: scaleX(0);
@@ -220,7 +220,7 @@ img {
 .orb-2 {
     width: 500px;
     height: 500px;
-    background: #a78bfa;
+    background: #38bdf8;
     bottom: -150px;
     left: -150px;
     animation-delay: -7s;
@@ -229,7 +229,7 @@ img {
 .orb-3 {
     width: 400px;
     height: 400px;
-    background: #818cf8;
+    background: #60a5fa;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -319,7 +319,7 @@ img {
 .logo {
     font-size: 1.8rem;
     font-weight: 900;
-    background: linear-gradient(135deg, var(--accent), #a78bfa);
+    background: linear-gradient(135deg, var(--accent), #38bdf8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -334,7 +334,7 @@ img {
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(135deg, var(--accent), #a78bfa);
+    background: linear-gradient(135deg, var(--accent), #38bdf8);
     border-radius: 2px;
     transform: scaleX(0);
     transform-origin: right;
@@ -367,7 +367,7 @@ img {
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(135deg, var(--accent), #a78bfa);
+    background: linear-gradient(135deg, var(--accent), #38bdf8);
     transition: width 0.3s ease;
     border-radius: 2px;
 }
@@ -518,7 +518,7 @@ img {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, var(--accent), #a78bfa, #c4b5fd);
+    background: linear-gradient(135deg, var(--accent), #38bdf8, #7dd3fc);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -918,7 +918,7 @@ img {
     width: 220px;
     height: 220px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), #a78bfa);
+    background: linear-gradient(135deg, var(--accent), #38bdf8);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1488,7 +1488,7 @@ img {
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--accent), #a78bfa);
+    background: linear-gradient(90deg, var(--accent), #38bdf8);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s ease;
