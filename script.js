@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Hover states for interactive elements
     function addHoverListeners() {
-        const hoverables = document.querySelectorAll('a, button, input, textarea, .work-card, .theme-btn, .filter-btn');
+        const hoverables = document.querySelectorAll('a, button, input, textarea, .theme-btn');
         hoverables.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 if (follower) follower.classList.add('hovering');
@@ -300,55 +300,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ===== Projects Grid Filtering ===== */
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.work-card');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all filter buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            button.classList.add('active');
-
-            const filterValue = button.getAttribute('data-filter');
-
-            projectCards.forEach(card => {
-                const cardCategory = card.getAttribute('data-category');
-                
-                if (filterValue === 'all' || cardCategory === filterValue) {
-                    if (card._transitionHandler) {
-                        card.removeEventListener('transitionend', card._transitionHandler);
-                        card._transitionHandler = null;
-                    }
-                    card.classList.remove('hidden');
-                    // Force reflow
-                    void card.offsetWidth;
-                    card.style.opacity = '1';
-                    card.style.transform = 'scale(1) translateY(0)';
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'scale(0.9) translateY(20px)';
-                    
-                    if (card._transitionHandler) {
-                        card.removeEventListener('transitionend', card._transitionHandler);
-                    }
-                    
-                    card._transitionHandler = function handleTransitionEnd(e) {
-                        if (e.propertyName === 'opacity') {
-                            card.classList.add('hidden');
-                            card.removeEventListener('transitionend', card._transitionHandler);
-                            card._transitionHandler = null;
-                        }
-                    };
-                    card.addEventListener('transitionend', card._transitionHandler);
-                }
-            });
-        });
-    });
-
     /* ===== Dynamic Card Spotlight Glow ===== */
-    const spotlightCards = document.querySelectorAll('.work-card, .service-card, .skill-group-card');
+    const spotlightCards = document.querySelectorAll('.service-card, .skill-group-card');
     spotlightCards.forEach(card => {
         card.addEventListener('mousemove', e => {
             const rect = card.getBoundingClientRect();
