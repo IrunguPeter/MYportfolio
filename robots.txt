@@ -2,6 +2,5 @@ User-agent: *
 Allow: /
 
 Disallow: /admin.html
-Disallow: /cv.html
 
 Sitemap: https://devstudio.co.ke/sitemap.xml
