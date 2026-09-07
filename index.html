@@ -28,20 +28,11 @@
 
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="cursor-follower"></div>
     <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
-
-    <div class="noise-overlay"></div>
-
-    <div class="orbs">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    </div>
 
     <nav class="nav" id="navbar">
         <div class="nav-inner">
@@ -65,32 +56,24 @@
 
     <!-- ===== HERO ===== -->
     <section id="hero" class="hero">
-        <div class="hero-bg">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1920&q=80"
-                 alt=""
-                 class="hero-bg-img"
-                 id="heroBg">
-            <div class="hero-overlay"></div>
-        </div>
-        <div class="hero-inner">
-            <h1 class="hero-title" data-reveal="fade-up">
-                I build websites,<br>
-                <span class="gradient-text">e-stores &amp; landing pages that convert.</span>
+        <div class="container hero-inner">
+            <span class="hero-tag">Web Developer &amp; Designer</span>
+            <h1 class="hero-title">
+                I build websites, e-stores<br>
+                &amp; landing pages that convert.
             </h1>
-            <p class="hero-desc" data-reveal="fade-up" data-reveal-delay="100">
-                I help freelancers, creators, and small businesses establish a strong online presence &mdash; through clean, performant websites that turn visitors into clients.
+            <p class="hero-desc">
+                I help freelancers, creators, and small businesses establish a strong online presence — through clean, performant websites that turn visitors into clients.
             </p>
-            <div class="hero-actions" data-reveal="fade-up" data-reveal-delay="200">
-                <a href="#contact" class="btn btn-primary">Get in touch</a>
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">Get a free quote <i class="fas fa-arrow-right"></i></a>
+                <a href="#services" class="btn btn-outline">View services</a>
             </div>
-            <div class="hero-socials" data-reveal="fade-up" data-reveal-delay="300">
+            <p class="hero-note"><i class="fas fa-bolt"></i> Free consultation &mdash; response within 24 hours</p>
+            <div class="hero-socials">
                 <a href="https://github.com/IrunguPeter" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/peter-irungu-758aa6373" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
-        </div>
-        <div class="hero-scroll">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
         </div>
     </section>
 
@@ -99,8 +82,8 @@
         <div class="container">
             <div class="section-head" data-reveal="fade-up">
                 <span class="section-tag">What I offer</span>
-                <h2 class="section-title">Services</h2>
-                <p class="section-desc">Straightforward packages designed for freelancers and small businesses.</p>
+                <h2 class="section-title">Do you see yourself here?</h2>
+                <p class="section-desc">Whether you run a restaurant, coach clients, speak on stages, or write — there's a website built for what you do.</p>
             </div>
             <div class="services-grid" data-reveal="fade-up" data-reveal-delay="100">
 
@@ -108,8 +91,9 @@
                     <div class="service-icon">
                         <i class="fas fa-id-card"></i>
                     </div>
+                    <p class="service-for">Freelancer? Speaker? Creative?</p>
                     <h3>Portfolio Website</h3>
-                    <p class="service-desc">A stunning personal portfolio that showcases your work and gets you hired — or lands you that next client.</p>
+                    <p class="service-desc">Showcase your work, your talks, your art. Look professional and get discovered — and hired.</p>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Responsive design (mobile-first)</li>
                         <li><i class="fas fa-check"></i> Projects &amp; skills showcase</li>
@@ -118,24 +102,27 @@
                         <li><i class="fas fa-check"></i> Fast load times &amp; SEO-ready</li>
                         <li><i class="fas fa-check"></i> 3-day delivery</li>
                     </ul>
+                    <div class="service-price">Starting at <strong>$200</strong></div>
                     <a href="#contact" class="btn btn-service">Get started <i class="fas fa-arrow-right"></i></a>
                 </div>
 
                 <div class="service-card service-card--featured">
-                    <div class="service-badge-featured">Most Popular</div>
+                    <div class="service-badge">Most Popular</div>
                     <div class="service-icon">
                         <i class="fas fa-rocket"></i>
                     </div>
+                    <p class="service-for">Therapist? Coach? Consultant?</p>
                     <h3>Landing Page</h3>
-                    <p class="service-desc">A high-converting landing page for your product, service, or campaign. Designed to turn visitors into leads.</p>
+                    <p class="service-desc">Let clients book their sessions easily. A conversion-focused page that turns visitors into booked appointments.</p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Conversion-focused design</li>
                         <li><i class="fas fa-check"></i> Clear call-to-action sections</li>
+                        <li><i class="fas fa-check"></i> Simple session booking flow</li>
                         <li><i class="fas fa-check"></i> Testimonials &amp; social proof</li>
                         <li><i class="fas fa-check"></i> Email capture integration</li>
                         <li><i class="fas fa-check"></i> Analytics-ready</li>
                         <li><i class="fas fa-check"></i> 2-day delivery</li>
                     </ul>
+                    <div class="service-price">Starting at <strong>$200</strong></div>
                     <a href="#contact" class="btn btn-service btn-service--primary">Get started <i class="fas fa-arrow-right"></i></a>
                 </div>
 
@@ -143,8 +130,9 @@
                     <div class="service-icon">
                         <i class="fas fa-layer-group"></i>
                     </div>
+                    <p class="service-for">Need something custom built?</p>
                     <h3>Full-Stack Web App</h3>
-                    <p class="service-desc">Need a backend, database, and custom logic? I'll build the complete solution — from database design to deployment.</p>
+                    <p class="service-desc">From booking platforms to member dashboards — custom logic, databases, and auth built around exactly how you work.</p>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> React / TypeScript frontend</li>
                         <li><i class="fas fa-check"></i> Node.js / Python backend</li>
@@ -153,6 +141,7 @@
                         <li><i class="fas fa-check"></i> Deployment &amp; hosting</li>
                         <li><i class="fas fa-check"></i> Timeline on consultation</li>
                     </ul>
+                    <div class="service-price">Starting at <strong>$700</strong></div>
                     <a href="#contact" class="btn btn-service">Let's talk <i class="fas fa-arrow-right"></i></a>
                 </div>
 
@@ -160,8 +149,9 @@
                     <div class="service-icon">
                         <i class="fas fa-store"></i>
                     </div>
+                    <p class="service-for">Shop owner? Boutique? Brand?</p>
                     <h3>E-Store</h3>
-                    <p class="service-desc">A ready-to-sell online store for your products — with payments, inventory, and an easy-to-manage catalog.</p>
+                    <p class="service-desc">Sell your products online with payments, cart, and inventory — ready to start taking orders today.</p>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Product catalog &amp; search</li>
                         <li><i class="fas fa-check"></i> Secure checkout &amp; payments</li>
@@ -170,6 +160,7 @@
                         <li><i class="fas fa-check"></i> Mobile-friendly storefront</li>
                         <li><i class="fas fa-check"></i> Delivery on consultation</li>
                     </ul>
+                    <div class="service-price">Starting at <strong>$500</strong></div>
                     <a href="#contact" class="btn btn-service">Get started <i class="fas fa-arrow-right"></i></a>
                 </div>
 
@@ -177,8 +168,9 @@
                     <div class="service-icon">
                         <i class="fas fa-link"></i>
                     </div>
+                    <p class="service-for">Blogger? Creator? Influencer?</p>
                     <h3>Link-in-Bio Page</h3>
-                    <p class="service-desc">A single landing page for creators — all your social links, latest offers, and deals in one place.</p>
+                    <p class="service-desc">One beautiful link for your audience. Your socials, your blog, your offers — all in one place.</p>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Buttons for all social platforms</li>
                         <li><i class="fas fa-check"></i> Featured offers &amp; deals</li>
@@ -187,6 +179,7 @@
                         <li><i class="fas fa-check"></i> Mobile-first design</li>
                         <li><i class="fas fa-check"></i> 1-day delivery</li>
                     </ul>
+                    <div class="service-price">Starting at <strong>$200</strong></div>
                     <a href="#contact" class="btn btn-service">Get started <i class="fas fa-arrow-right"></i></a>
                 </div>
 
@@ -194,17 +187,38 @@
                     <div class="service-icon">
                         <i class="fas fa-seedling"></i>
                     </div>
+                    <p class="service-for">Restaurant? Salon? Local shop?</p>
                     <h3>Microbusiness Website</h3>
-                    <p class="service-desc">An affordable, polished website for small shops and side hustles — your business info, services, and contact in one place.</p>
+                    <p class="service-desc">Let customers book reservations, see your hours, and find you — all without a single phone call.</p>
                     <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Reservation &amp; booking flow</li>
                         <li><i class="fas fa-check"></i> Business info &amp; services page</li>
-                        <li><i class="fas fa-check"></i> Contact form &amp; map</li>
                         <li><i class="fas fa-check"></i> Working hours &amp; location</li>
                         <li><i class="fas fa-check"></i> Mobile-friendly &amp; SEO-ready</li>
                         <li><i class="fas fa-check"></i> Easy to update later</li>
                         <li><i class="fas fa-check"></i> 3-day delivery</li>
                     </ul>
+                    <div class="service-price">Starting at <strong>$300</strong></div>
                     <a href="#contact" class="btn btn-service">Get started <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </div>
+                    <p class="service-for">Something unique in mind?</p>
+                    <h3>Custom Website</h3>
+                    <p class="service-desc">Want visibility? Let's talk. I'll build exactly what your business needs — no templates, no limits.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Fully tailored to your needs</li>
+                        <li><i class="fas fa-check"></i> Any tech stack</li>
+                        <li><i class="fas fa-check"></i> Custom animations &amp; interactions</li>
+                        <li><i class="fas fa-check"></i> API integrations</li>
+                        <li><i class="fas fa-check"></i> Ongoing support available</li>
+                        <li><i class="fas fa-check"></i> Timeline on consultation</li>
+                    </ul>
+                    <div class="service-price">Get a quote</div>
+                    <a href="#contact" class="btn btn-service">Let's talk <i class="fas fa-arrow-right"></i></a>
                 </div>
 
             </div>
@@ -212,7 +226,7 @@
     </section>
 
     <!-- ===== PROCESS ===== -->
-    <section id="process" class="process" data-reveal="fade-up">
+    <section id="process" class="process">
         <div class="container">
             <div class="section-head" data-reveal="fade-up">
                 <span class="section-tag">How it works</span>
@@ -242,71 +256,15 @@
         </div>
     </section>
 
-    <!-- ===== TESTIMONIALS ===== -->
-    <section id="testimonials" class="testimonials" data-reveal="fade-up">
-        <div class="container">
-            <div class="section-head" data-reveal="fade-up">
-                <span class="section-tag">Testimonials</span>
-                <h2 class="section-title">What clients say.</h2>
-                <p class="section-desc">Real words from people I've built for.</p>
-            </div>
-            <div class="testimonials-grid" data-reveal="fade-up" data-reveal-delay="100">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-quote">Peter built my portfolio in days and it landed me two freelance gigs in the first month.</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">WM</div>
-                        <div>
-                            <div class="testimonial-name">Wanjiku M.</div>
-                            <div class="testimonial-role">Freelance Writer</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-quote">The landing page doubled our sign-ups. Fast, professional, and easy to work with.</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">BK</div>
-                        <div>
-                            <div class="testimonial-name">Brian K.</div>
-                            <div class="testimonial-role">Founder, Kijani Greenhouses</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-quote">My microbusiness finally looks legit online. Customers now find us, our hours, and how to order.</p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">AS</div>
-                        <div>
-                            <div class="testimonial-name">Amina S.</div>
-                            <div class="testimonial-role">Owner, Nairobi Sweets</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ===== ABOUT ===== -->
-    <section id="about" class="about" data-reveal="fade-up">
+    <section id="about" class="about">
         <div class="container">
             <div class="about-grid">
                 <div class="about-visual" data-reveal="fade-up">
-                    <div class="avatar-ring">
-                        <span class="avatar-initials">PI</span>
-                    </div>
-                    <div class="about-image">
-                        <img src="https://api.dicebear.com/9.x/notionists/svg?seed=Peter&backgroundColor=2563eb&backgroundRotation=0&size=256"
-                             alt="Programmer avatar"
+                    <div class="avatar-wrapper">
+                        <img src="https://api.dicebear.com/9.x/notionists/svg?seed=Peter&backgroundColor=10b981&backgroundRotation=0&size=256"
+                             alt="Peter Irungu avatar"
                              class="about-avatar">
-                        <div class="about-image-border"></div>
                     </div>
                     <div class="about-stats">
                         <div class="stat">
@@ -333,11 +291,11 @@
                     </p>
                     <p>
                         Whether you're a freelancer needing a portfolio, a creator needing a link-in-bio,
-                        or a business wanting a website that converts &mdash; I turn your vision into
+                        or a business wanting a website that converts — I turn your vision into
                         something that works.
                     </p>
                     <div class="skills-grid">
-                        <div class="skill-group-card">
+                        <div class="skill-group">
                             <div class="skill-group-header">
                                 <i class="fas fa-laptop-code"></i>
                                 <h3>Frontend</h3>
@@ -350,7 +308,7 @@
                                 <span>TypeScript</span>
                             </div>
                         </div>
-                        <div class="skill-group-card">
+                        <div class="skill-group">
                             <div class="skill-group-header">
                                 <i class="fas fa-server"></i>
                                 <h3>Backend</h3>
@@ -363,10 +321,10 @@
                                 <span>Firebase</span>
                             </div>
                         </div>
-                        <div class="skill-group-card">
+                        <div class="skill-group">
                             <div class="skill-group-header">
                                 <i class="fas fa-gamepad"></i>
-                                <h3>Games & Automation</h3>
+                                <h3>Games &amp; Automation</h3>
                             </div>
                             <div class="skill-tags">
                                 <span>Pygame</span>
@@ -374,14 +332,14 @@
                                 <span>API Integrations</span>
                             </div>
                         </div>
-                        <div class="skill-group-card">
+                        <div class="skill-group">
                             <div class="skill-group-header">
                                 <i class="fas fa-palette"></i>
-                                <h3>Design & Tools</h3>
+                                <h3>Design &amp; Tools</h3>
                             </div>
                             <div class="skill-tags">
                                 <span>Figma</span>
-                                <span>Git & GitHub</span>
+                                <span>Git &amp; GitHub</span>
                                 <span>VS Code</span>
                                 <span>Responsive Layouts</span>
                             </div>
@@ -393,7 +351,7 @@
     </section>
 
     <!-- ===== CONTACT ===== -->
-    <section id="contact" class="contact" data-reveal="fade-up">
+    <section id="contact" class="contact">
         <div class="container">
             <div class="section-head" data-reveal="fade-up">
                 <span class="section-tag">Get in touch</span>
@@ -419,7 +377,7 @@
                                 <i class="fas fa-map-marker-alt"></i>
                                 <div>
                                     <span class="detail-label">Location</span>
-                                    <span>Kenya &mdash; Available worldwide</span>
+                                    <span>Kenya — Available worldwide</span>
                                 </div>
                             </div>
                             <div class="detail">
@@ -475,9 +433,27 @@
         </div>
     </section>
 
+    <!-- ===== CTA BANNER ===== -->
+    <section id="cta" class="cta">
+        <div class="container">
+            <div class="cta-card" data-reveal="fade-up">
+                <h2 class="cta-title">Want visibility?</h2>
+                <p class="cta-desc">Restaurant, therapist, speaker, blogger — whatever you do, I'll put you online the way you deserve. Get your free, no-obligation quote today.</p>
+                <div class="cta-actions">
+                    <a href="#contact" class="btn btn-cta">Get your free quote <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="cta-perks">
+                    <span><i class="fas fa-check-circle"></i> No commitment required</span>
+                    <span><i class="fas fa-check-circle"></i> Response in 24 hours</span>
+                    <span><i class="fas fa-check-circle"></i> Honest pricing, no hidden fees</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="footer-inner">
-            <p>&copy; 2026 Peter Irungu &mdash; Built with <i class="fas fa-heart" style="color: var(--accent);"></i></p>
+            <p>&copy; 2026 Peter Irungu — Built with <i class="fas fa-heart" style="color: var(--accent);"></i></p>
             <div class="footer-links">
                 <a href="https://github.com/IrunguPeter" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/peter-irungu-758aa6373" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>

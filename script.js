@@ -5,55 +5,6 @@ const CONFIG = {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* ===== Custom Cursor Follower ===== */
-    const follower = document.querySelector('.cursor-follower');
-    let mouseX = 0, mouseY = 0;
-    let followerX = 0, followerY = 0;
-
-    // Track mouse movement
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    }, { passive: true });
-
-    // Smooth lerp loop
-    function updateFollower() {
-        const dx = mouseX - followerX;
-        const dy = mouseY - followerY;
-        
-        followerX += dx * 0.15;
-        followerY += dy * 0.15;
-        
-        if (follower) {
-            follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) translate(-50%, -50%)`;
-        }
-        
-        requestAnimationFrame(updateFollower);
-    }
-    updateFollower();
-
-    // Hover states for interactive elements
-    function addHoverListeners() {
-        const hoverables = document.querySelectorAll('a, button, input, textarea, .theme-btn');
-        hoverables.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                if (follower) follower.classList.add('hovering');
-            });
-            el.addEventListener('mouseleave', () => {
-                if (follower) follower.classList.remove('hovering');
-            });
-        });
-    }
-    addHoverListeners();
-
-    // Clicking states
-    document.addEventListener('mousedown', () => {
-        if (follower) follower.classList.add('clicking');
-    });
-    document.addEventListener('mouseup', () => {
-        if (follower) follower.classList.remove('clicking');
-    });
-
     /* ===== Theme Toggle ===== */
     const themeBtn = document.getElementById('themeToggle');
     const icon = themeBtn.querySelector('i');
@@ -87,21 +38,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ===== Optimized Scroll Handler ===== */
     const navbar = document.getElementById('navbar');
-    const heroBg = document.getElementById('heroBg');
     const topBtn = document.getElementById('scrollTop');
     const sections = document.querySelectorAll('section[id]');
     const navLinksList = document.querySelectorAll('.nav-link');
-    const hero = document.querySelector('.hero');
 
     let isScrolling = false;
 
     function handleScroll() {
         const scrollY = window.scrollY;
 
-        // Navbar Effect (acts as fallback if scroll-timeline is unsupported)
+        // Navbar Effect
         navbar.classList.toggle('scrolled', scrollY > 50);
 
-        // Scroll Progress Bar Fallback (Firefox, etc.)
+        // Scroll Progress Bar Fallback
         const progressEl = document.getElementById('scrollProgress');
         if (progressEl && !CSS.supports('animation-timeline', 'scroll()')) {
             const scrollable = document.documentElement.scrollHeight - window.innerHeight;
@@ -115,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentId = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
             if (scrollY >= sectionTop - 150) {
                 currentId = section.getAttribute('id');
             }
@@ -127,12 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.classList.add('active');
             }
         });
-
-        // Hero Parallax
-        if (heroBg && hero && scrollY < hero.offsetHeight) {
-            const translateY = scrollY * 0.3;
-            heroBg.style.transform = `translateY(${translateY}px) scale(1.05)`;
-        }
 
         // Top Button & Counters
         topBtn.classList.toggle('visible', scrollY > 400);
@@ -169,20 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     revealElements.forEach(el => revealObserver.observe(el));
-
-    /* ===== Magnetic Buttons ===== */
-    const magneticBtns = document.querySelectorAll('.btn-primary, .btn-ghost, .theme-btn');
-    magneticBtns.forEach(btn => {
-        btn.addEventListener('mousemove', e => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
-        });
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = `translate(0px, 0px)`;
-        });
-    });
 
     /* ===== Counter Animation ===== */
     const counters = document.querySelectorAll('.stat-num');
@@ -224,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
     const btnText = document.getElementById('btnText');
-    const btnIcon = document.getElementById('btnIcon');
     const success = document.getElementById('successMsg');
 
     function isValidEmail(v) {
@@ -297,18 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.form-group input, .form-group textarea').forEach(el => {
         el.addEventListener('input', function() {
             if (this.value.trim()) clearError(this);
-        });
-    });
-
-    /* ===== Dynamic Card Spotlight Glow ===== */
-    const spotlightCards = document.querySelectorAll('.service-card, .skill-group-card');
-    spotlightCards.forEach(card => {
-        card.addEventListener('mousemove', e => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
         });
     });
 
