@@ -180,6 +180,28 @@ img { max-width: 100%; display: block; }
     color: #fff;
 }
 
+.currency-btn {
+    background: var(--accent-light);
+    border: none;
+    color: var(--accent);
+    height: 38px;
+    padding: 0 0.9rem;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.currency-btn:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
 .menu-btn {
     display: none;
     flex-direction: column;
@@ -476,6 +498,11 @@ img { max-width: 100%; display: block; }
 .service-price strong {
     color: var(--text);
     font-weight: 700;
+}
+
+.service-price__cur {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
 }
 
 .btn-service {

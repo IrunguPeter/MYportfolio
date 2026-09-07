@@ -21,6 +21,53 @@ document.addEventListener('DOMContentLoaded', () => {
         icon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
     });
 
+    /* ===== Currency Toggle (KES / USD) ===== */
+    const currencyBtn = document.getElementById('currencyToggle');
+    const currencyLabel = document.getElementById('currencyLabel');
+    const prices = document.querySelectorAll('.price');
+    const savedCurrency = localStorage.getItem('currency') || 'USD';
+
+    function formatKES(n) {
+        return 'KES ' + Number(n).toLocaleString();
+    }
+
+    function formatUSD(n) {
+        return '$' + Number(n);
+    }
+
+    function applyCurrency(cur) {
+        prices.forEach(p => {
+            if (cur === 'KES') {
+                p.textContent = formatKES(p.dataset.kes);
+            } else {
+                p.textContent = formatUSD(p.dataset.usd);
+            }
+        });
+        document.querySelectorAll('.service-price').forEach(el => {
+            const strong = el.querySelector('.price');
+            el.querySelector('.service-price__cur')?.remove();
+            const label = strong ? (cur === 'KES' ? ' / $' + strong.dataset.usd : ' / KES ' + Number(strong.dataset.kes).toLocaleString()) : '';
+            if (strong && label) {
+                const span = document.createElement('span');
+                span.className = 'service-price__cur';
+                span.textContent = label;
+                el.appendChild(span);
+            }
+        });
+        currencyLabel.textContent = cur === 'KES' ? 'USD' : 'KES';
+    }
+
+    currencyBtn.addEventListener('click', () => {
+        const cur = currencyBtn.getAttribute('data-cur') === 'KES' ? 'USD' : 'KES';
+        currencyBtn.setAttribute('data-cur', cur);
+        applyCurrency(cur);
+        localStorage.setItem('currency', cur);
+    });
+
+    const intlCurrency = savedCurrency === 'KES' ? 'KES' : 'USD';
+    currencyBtn.setAttribute('data-cur', intlCurrency);
+    applyCurrency(intlCurrency);
+
     /* ===== Mobile Menu ===== */
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
