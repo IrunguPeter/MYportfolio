@@ -1,6 +1,7 @@
 // ===== CONFIG =====
 const CONFIG = {
-    web3FormsKey: '691b935c-2b39-41cd-9894-2b117f8b9ff4'
+    web3FormsKey: '691b935c-2b39-41cd-9894-2b117f8b9ff4',
+    sheetUrl: 'YOUR_APP_SCRIPT_URL' // Google Apps Script web app URL (orders storage)
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -35,6 +36,30 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.remove('active');
         });
     });
+
+    /* ===== Rotating Word (CTA) ===== */
+    const rotateWord = document.querySelector('.rotate-word');
+    if (rotateWord) {
+        const words = ['Restaurant', 'Therapist', 'Speaker', 'Blogger', 'Shop owner', 'Store', 'Salon'];
+        let wordIndex = 0;
+        setInterval(() => {
+            wordIndex = (wordIndex + 1) % words.length;
+            rotateWord.classList.add('is-leaving');
+            setTimeout(() => {
+                rotateWord.textContent = words[wordIndex];
+                rotateWord.classList.remove('is-leaving');
+                rotateWord.classList.add('is-entering');
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        rotateWord.classList.add('in');
+                    });
+                });
+                setTimeout(() => {
+                    rotateWord.classList.remove('is-entering', 'in');
+                }, 400);
+            }, 400);
+        }, 3000);
+    }
 
     /* ===== Optimized Scroll Handler ===== */
     const navbar = document.getElementById('navbar');
@@ -188,6 +213,23 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.classList.add('loading');
         btnText.textContent = 'Sending...';
 
+        const payload = {
+            name: name.value.trim(),
+            email: email.value.trim(),
+            subject: subject.value.trim(),
+            message: message.value.trim()
+        };
+
+        // Store order to Google Sheet (fire-and-forget so emails still work)
+        if (CONFIG.sheetUrl.indexOf('YOUR_APP_SCRIPT_URL') !== 0) {
+            fetch(CONFIG.sheetUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(payload)
+            }).catch(() => {});
+        }
+
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: {
@@ -196,10 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify({
                 access_key: CONFIG.web3FormsKey,
-                name: name.value.trim(),
-                email: email.value.trim(),
-                subject: subject.value.trim(),
-                message: message.value.trim()
+                ...payload
             })
         })
         .then(res => res.json())
