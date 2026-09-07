@@ -179,6 +179,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnText = document.getElementById('btnText');
     const success = document.getElementById('successMsg');
 
+    /* ===== Service Selection (remember what they chose) ===== */
+    let selectedService = '';
+
+    document.querySelectorAll('.btn-service').forEach(btn => {
+        btn.addEventListener('click', () => {
+            selectedService = btn.dataset.service || '';
+            const subjectField = document.getElementById('subject');
+            if (subjectField && selectedService && !subjectField.value.trim()) {
+                subjectField.value = 'Quote: ' + selectedService;
+            }
+        });
+    });
+
     function isValidEmail(v) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
     }
@@ -217,7 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
             name: name.value.trim(),
             email: email.value.trim(),
             subject: subject.value.trim(),
-            message: message.value.trim()
+            message: message.value.trim(),
+            service: selectedService || 'Not specified'
         };
 
         // Store order to Google Sheet (fire-and-forget so emails still work)
