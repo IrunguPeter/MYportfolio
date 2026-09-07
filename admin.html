@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin &mdash; Peter Irungu</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8faf9;
+            --card: #ffffff;
+            --text: #111827;
+            --text-secondary: #6b7280;
+            --accent: #10b981;
+            --accent-hover: #059669;
+            --accent-light: rgba(16, 185, 129, 0.08);
+            --border: #e5e7eb;
+            --danger: #ef4444;
+            --radius: 10px;
+            --radius-lg: 16px;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0a0f0d;
+            --card: #111916;
+            --text: #f1f5f3;
+            --text-secondary: #94a3a0;
+            --accent: #34d399;
+            --accent-light: rgba(52, 211, 153, 0.1);
+            --border: #1e2a25;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--card);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header-left { display: flex; align-items: center; gap: 1rem; }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -1px;
+        }
+
+        .header-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .header-actions { display: flex; align-items: center; gap: 0.75rem; }
+
+        .icon-btn, .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.1rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text);
+            font-size: 0.82rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover { background: var(--accent-hover); }
+
+        .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+        .icon-btn.circle { width: 38px; height: 38px; padding: 0; justify-content: center; border-radius: 50%; }
+
+        .main { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+        }
+
+        .stat-card .num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .stat-card .label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .card-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-head h2 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .orders-wrap { overflow-x: auto; }
+
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+
+        th {
+            text-align: left;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 0.85rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        td.message { max-width: 280px; white-space: pre-wrap; word-break: break-word; }
+        td .sub { color: var(--text-secondary); font-size: 0.78rem; }
+        td.empty { text-align: center; padding: 3rem; color: var(--text-secondary); }
+
+        .badge-new {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+        }
+
+        /* Gate */
+        .gate {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 70px);
+            padding: 2rem;
+        }
+
+        .gate-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+
+        .gate-card .lock {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin: 0 auto 1.25rem;
+        }
+
+        .gate-card h1 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.4rem; }
+
+        .gate-card p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+
+        .gate-card input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius);
+            border: 1.5px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.2s;
+            margin-bottom: 1rem;
+        }
+
+        .gate-card input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+
+        .gate-error {
+            display: none;
+            font-size: 0.78rem;
+            color: var(--danger);
+            margin-top: 0.75rem;
+        }
+
+        .gate-error.show { display: block; }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--text);
+            color: var(--bg);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-full);
+            font-size: 0.82rem;
+            font-weight: 500;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 50;
+        }
+
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        @media (max-width: 768px) {
+            .stats { grid-template-columns: 1fr; }
+            .header { padding: 0.85rem 1.25rem; }
+            .header-title { display: none; }
+            .main { padding: 1.5rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header" id="header">
+        <div class="header-left">
+            <span class="logo">PI.</span>
+            <span class="header-title">Order Dashboard</span>
+        </div>
+        <div class="header-actions">
+            <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+            <button class="btn" id="refreshBtn"><i class="fas fa-sync-alt"></i> Refresh</button>
+            <button class="btn btn-primary" id="exportBtn"><i class="fas fa-download"></i> Export CSV</button>
+            <button class="btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Lock</button>
+        </div>
+    </header>
+
+    <div class="main" id="dashboard" style="display:none;">
+        <div class="stats">
+            <div class="stat-card">
+                <div class="num" id="statTotal">0</div>
+                <div class="label">Total Orders</div>
+            </div>
+            <div class="stat-card">
+                <div class="num" id="statToday">0</div>
+                <div class="label">Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="num" id="statWeek">0</div>
+                <div class="label">Last 7 Days</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-head">
+                <h2>New Orders</h2>
+                <span class="badge-new" id="countBadge">0 new</span>
+            </div>
+            <div id="ordersWrap" class="orders-wrap">
+                <div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading orders...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="gate" id="gate">
+        <div class="gate-card">
+            <div class="lock"><i class="fas fa-lock"></i></div>
+            <h1>Admin Access</h1>
+            <p>Enter your admin key to view orders.</p>
+            <input type="password" id="keyInput" placeholder="Admin key" autocomplete="off">
+            <button class="btn btn-primary" id="unlockBtn" style="width:100%; justify-content:center;">Unlock</button>
+            <div class="gate-error" id="gateError"><i class="fas fa-exclamation-circle"></i> Wrong key. Try again.</div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        const CONFIG = {
+            sheetUrl: 'YOUR_APP_SCRIPT_URL' // e.g. https://script.google.com/macros/s/XXXX/exec
+        };
+
+        const $ = id => document.getElementById(id);
+
+        // Theme
+        const saved = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', saved);
+        $('themeToggle').innerHTML = `<i class="fas ${saved === 'dark' ? 'fa-sun' : 'fa-moon'}"></i>`;
+        $('themeToggle').addEventListener('click', () => {
+            const cur = document.documentElement.getAttribute('data-theme');
+            const next = cur === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            $('themeToggle').innerHTML = `<i class="fas ${next === 'dark' ? 'fa-sun' : 'fa-moon'}"></i>`;
+        });
+
+        let orders = [];
+        let gateOpen = false;
+
+        function guard() {
+            if (CONFIG.sheetUrl.indexOf('YOUR_APP_SCRIPT_URL') === 0) {
+                showToast('Set CONFIG.sheetUrl in admin.html first', true);
+                return false;
+            }
+            return true;
+        }
+
+        function showGate() {
+            $('gate').style.display = 'flex';
+            $('dashboard').style.display = 'none';
+            gateOpen = false;
+        }
+
+        function showDashboard() {
+            $('gate').style.display = 'none';
+            $('dashboard').style.display = 'block';
+            gateOpen = true;
+            loadOrders();
+        }
+
+        function showToast(msg, isError) {
+            const t = $('toast');
+            t.textContent = msg;
+            t.style.background = isError ? '#ef4444' : '';
+            t.style.color = isError ? '#fff' : '';
+            t.classList.add('show');
+            clearTimeout(t._timer);
+            t._timer = setTimeout(() => t.classList.remove('show'), 3000);
+        }
+
+        async function loadOrders() {
+            if (!gateOpen || !guard()) return;
+            const wrap = $('ordersWrap');
+            wrap.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading orders...</div>';
+            try {
+                const key = sessionStorage.getItem('adminKey');
+                const res = await fetch(CONFIG.sheetUrl + '?key=' + encodeURIComponent(key));
+                const data = await res.json();
+                if (!data.success) {
+                    if (data.error === 'Unauthorized') {
+                        showGate();
+                        $('gateError').classList.add('show');
+                        sessionStorage.removeItem('adminKey');
+                        showToast('Session expired. Re-enter your key.', true);
+                        return;
+                    }
+                    throw new Error(data.error);
+                }
+                orders = data.orders || [];
+                render();
+            } catch (err) {
+                wrap.innerHTML = '<div class="loading">Failed to load orders. Check CONFIG.sheetUrl and your internet connection.</div>';
+                showToast('Failed to load orders', true);
+            }
+        }
+
+        function render() {
+            const ordered = orders.slice().reverse();
+            const now = new Date();
+            const today = ordered.filter(o => isToday(o.Timestamp)).length;
+            const week = ordered.filter(o => isWithinDays(o.Timestamp, 7)).length;
+            $('statTotal').textContent = orders.length;
+            $('statToday').textContent = today;
+            $('statWeek').textContent = week;
+            $('countBadge').textContent = orders.length + ' total';
+
+            const wrap = $('ordersWrap');
+            if (!ordered.length) {
+                wrap.innerHTML = '<div class="loading">No orders yet. They will appear here as they come in.</div>';
+                return;
+            }
+
+            let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+
+            ordered.forEach(o => {
+                html += `
+                    <tr>
+                        <td style="white-space:nowrap;">${esc(formatDate(o.Timestamp))}</td>
+                        <td>${esc(o.Name)}</td>
+                        <td>${esc(o.Email)}</td>
+                        <td>${esc(o.Subject)}</td>
+                        <td class="message">${esc(o.Message)}</td>
+                    </tr>`;
+            });
+
+            html += '</tbody></table>';
+            wrap.innerHTML = html;
+        }
+
+        function isToday(ts) {
+            const d = parseDate(ts);
+            if (!d) return false;
+            const now = new Date();
+            return d.toDateString() === now.toDateString();
+        }
+
+        function isWithinDays(ts, days) {
+            const d = parseDate(ts);
+            if (!d) return false;
+            const diff = (new Date() - d) / 86400000;
+            return diff <= days;
+        }
+
+        function parseDate(ts) {
+            if (!ts) return null;
+            const d = new Date(ts);
+            return isNaN(d.getTime()) ? null : d;
+        }
+
+        function formatDate(ts) {
+            const d = parseDate(ts);
+            if (!d) return ts || '';
+            return d.toLocaleString(undefined, {
+                year: 'numeric', month: 'short', day: 'numeric',
+                hour: '2-digit', minute: '2-digit'
+            });
+        }
+
+        function esc(s) {
+            return String(s == null ? '' : s)
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+
+        function exportCSV() {
+            if (!orders.length) { showToast('Nothing to export yet'); return; }
+            const headers = ['Timestamp', 'Name', 'Email', 'Subject', 'Message'];
+            const rows = orders.map(o => headers.map(h => '"' + String(o[h] || '').replace(/"/g, '""') + '"').join(','));
+            const csv = '\uFEFF' + [headers.join(','), ...rows].join('\n');
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'orders.csv';
+            a.click();
+            URL.revokeObjectURL(a.href);
+            showToast('CSV exported');
+        }
+
+        // Unlock
+        $('unlockBtn').addEventListener('click', tryUnlock);
+        $('keyInput').addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
+
+        function tryUnlock() {
+            const key = $('keyInput').value.trim();
+            if (!key) { $('keyInput').focus(); return; }
+            sessionStorage.setItem('adminKey', key);
+            $('gateError').classList.remove('show');
+            showDashboard();
+        }
+
+        $('refreshBtn').addEventListener('click', loadOrders);
+        $('exportBtn').addEventListener('click', exportCSV);
+        $('logoutBtn').addEventListener('click', () => {
+            sessionStorage.removeItem('adminKey');
+            $('keyInput').value = '';
+            showGate();
+        });
+
+        // Restore session
+        if (sessionStorage.getItem('adminKey') && guard()) {
+            showDashboard();
+        } else {
+            showGate();
+        }
+    </script>
+</body>
+</html>
