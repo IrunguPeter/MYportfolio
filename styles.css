@@ -60,7 +60,7 @@ ul { list-style: none; }
 img { max-width: 100%; display: block; }
 
 .container {
-    max-width: 1120px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 1.5rem;
 }
@@ -110,7 +110,7 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-inner {
-    max-width: 1120px;
+    max-width: 1280px;
     width: 100%;
     margin: 0 auto;
     padding: 0 1.5rem;
@@ -1093,7 +1093,7 @@ img { max-width: 100%; display: block; }
 }
 
 .footer-inner {
-    max-width: 1120px;
+    max-width: 1280px;
     width: 100%;
     margin: 0 auto;
     padding: 0 1.5rem;
@@ -1239,4 +1239,42 @@ img { max-width: 100%; display: block; }
     .section-title { font-size: 1.4rem; }
     .btn { padding: 0.6rem 1.2rem; font-size: 0.82rem; }
     .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+}
+
+/* ===== LARGE DESKTOP ===== */
+@media (min-width: 1280px) {
+    .container { max-width: 1280px; padding: 0 3rem; }
+    .nav-inner, .footer-inner { max-width: 1280px; padding: 0 3rem; }
+
+    .services-grid { grid-template-columns: repeat(4, 1fr); }
+    .process-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .services { padding: 5rem 0; }
+    .process { padding: 5rem 0; }
+    .about { padding: 5rem 0; }
+    .contact { padding: 5rem 0; }
+
+    .hero { padding: 7rem 0 3rem; }
+    .hero-title { font-size: 3.2rem; }
+}
+
+/* ===== ULTRAWIDE ===== */
+@media (min-width: 1600px) {
+    .container { max-width: 1440px; padding: 0 4rem; }
+    .nav-inner, .footer-inner { max-width: 1440px; padding: 0 4rem; }
+
+    .services-grid { grid-template-columns: repeat(4, 1fr); gap: 1.75rem; }
+    .process-grid { grid-template-columns: repeat(4, 1fr); gap: 1.75rem; }
+
+    .services { padding: 4rem 0; }
+    .process { padding: 4rem 0; }
+    .about { padding: 4rem 0; }
+    .contact { padding: 4rem 0; }
+
+    .hero { padding: 6rem 0 2.5rem; }
+    .hero-title { font-size: 3.5rem; }
+    .hero-grid { gap: 5rem; }
+
+    .about-grid { gap: 5rem; }
+    .contact-card { padding: 3.5rem; gap: 4rem; }
 }
