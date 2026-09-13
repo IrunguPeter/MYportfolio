@@ -128,7 +128,7 @@ export default function Home() {
               <p className="font-display text-xl font-medium tracking-tight">From idea to live.</p>
             </div>
             <div className="relative overflow-hidden rounded-[28px] border border-[#171717]/10 bg-[#e9e3d8] shadow-[0_30px_80px_rgba(23,23,23,0.18)]">
-              <img src="/manus-storage/devstudio-hero_d2ec7b0d.jpg" alt="Website mockup for a modern restaurant brand" className="h-auto w-full object-cover" />
+              <img src="/assets/devstudio-hero.webp" alt="Website mockup for a modern restaurant brand" className="h-auto w-full object-cover" />
               <div className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full bg-white/90 px-3 py-2 text-[11px] font-semibold shadow-lg backdrop-blur-sm"><span className="h-2 w-2 rounded-full bg-[#c8f169]" /> Made for mobile first</div>
             </div>
             <div className="absolute -bottom-6 -right-4 grid h-20 w-20 place-items-center rounded-full bg-[#c8f169] text-center text-[10px] font-bold uppercase leading-3 tracking-[0.12em] text-[#171717] shadow-[0_15px_30px_rgba(200,241,105,0.35)] sm:-right-10">Built<br />to move</div>
@@ -154,7 +154,7 @@ export default function Home() {
             {work.map((item, index) => (
               <article key={item.label} className={`group relative overflow-hidden rounded-[24px] border border-[#171717]/10 ${index === 0 ? "bg-[#d9e2ff]" : index === 1 ? "bg-[#dff1a8]" : "bg-[#222]"}`}>
                 <div className="aspect-[0.86] overflow-hidden">
-                  <img src="/manus-storage/devstudio-work_6add26bd.jpg" alt={`${item.title} website concept`} className={`h-full w-full object-cover grayscale-[15%] transition duration-500 group-hover:scale-105 ${item.imagePosition}`} />
+                  <img src="/assets/devstudio-work.webp" alt={`${item.title} website concept`} className={`h-full w-full object-cover grayscale-[15%] transition duration-500 group-hover:scale-105 ${item.imagePosition}`} />
                   <div className={`absolute inset-0 bg-gradient-to-t ${index === 2 ? "from-black/70" : "from-black/35"} via-transparent to-transparent`} />
                 </div>
                 <div className="absolute inset-x-0 bottom-0 p-5 text-white">
