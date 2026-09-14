@@ -73,7 +73,7 @@ export default function Home() {
           <div className="hidden items-center gap-8 md:flex">
             <button onClick={() => scrollTo("work")} className="nav-link">Work</button>
             <button onClick={() => scrollTo("services")} className="nav-link">Services</button>
-            <a href="/pricing" className="nav-link">Pricing</a>
+            <a href="/#pricing" className="nav-link">Pricing</a>
             <button onClick={() => scrollTo("process")} className="nav-link">Process</button>
             <button onClick={() => scrollTo("about")} className="nav-link">About</button>
           </div>
@@ -89,7 +89,7 @@ export default function Home() {
             <div className="flex flex-col gap-4 text-lg font-medium">
               <button onClick={() => scrollTo("work")} className="text-left">Work</button>
               <button onClick={() => scrollTo("services")} className="text-left">Services</button>
-              <a href="/pricing" onClick={() => setMenuOpen(false)} className="text-left">Pricing</a>
+              <a href="/#pricing" onClick={() => setMenuOpen(false)} className="text-left">Pricing</a>
               <button onClick={() => scrollTo("process")} className="text-left">Process</button>
               <button onClick={() => scrollTo("about")} className="text-left">About</button>
               <button onClick={() => scrollTo("contact")} className="mt-2 flex w-fit items-center gap-2 rounded-full bg-[#1747d1] px-4 py-3 text-sm font-semibold text-white">Start a project <ArrowUpRight className="h-4 w-4" /></button>
@@ -118,7 +118,7 @@ export default function Home() {
               <button onClick={() => scrollTo("work")} className="group inline-flex items-center gap-2 px-1 py-3 text-[13px] font-semibold text-[#171717]">
                 See selected work <ArrowDownRight className="h-4 w-4 transition-transform group-hover:translate-y-1 group-hover:translate-x-1" />
               </button>
-              <a href="/pricing" className="group inline-flex items-center gap-2 rounded-full border border-[#171717]/15 px-4 py-3 text-[13px] font-semibold text-[#171717] transition hover:border-[#1747d1] hover:text-[#1747d1]">
+              <a href="/#pricing" className="group inline-flex items-center gap-2 rounded-full border border-[#171717]/15 px-4 py-3 text-[13px] font-semibold text-[#171717] transition hover:border-[#1747d1] hover:text-[#1747d1]">
                 See pricing <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>
@@ -210,13 +210,25 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="pricing" className="scroll-mt-20 bg-[#e8e2d8] py-24 sm:py-32">
+          <div className="container">
+            <div className="mb-12 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+              <div><p className="eyebrow">Simple starting points / 04</p><h2 className="section-title mt-4">Know the<br /><span className="text-[#1747d1]">starting point.</span></h2></div>
+              <p className="max-w-[310px] text-sm leading-6 text-[#171717]/60">Clear KSh pricing for common projects. We’ll confirm the final scope before anything starts.</p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {[{ name: "Launch", price: "25,000", text: "Portfolio, landing page, or small business website." }, { name: "Sell", price: "70,000", text: "Online store, catalogue, M-Pesa, or bookings." }, { name: "Scale", price: "100,000", text: "Custom apps, POS systems, dashboards, or integrations." }].map((item, index) => <a href="/pricing" key={item.name} className={`group rounded-[22px] border border-[#171717]/10 p-6 transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(23,23,23,0.12)] ${index === 1 ? "bg-[#1747d1] text-white" : "bg-white/65"}`}><div className="flex items-start justify-between gap-4"><div><p className={`text-[10px] font-bold uppercase tracking-[0.16em] ${index === 1 ? "text-[#c8f169]" : "text-[#1747d1]"}`}>{item.name}</p><p className="mt-4 font-display text-4xl font-medium tracking-[-0.05em]">KSh {item.price}<span className="ml-1 text-sm font-sans font-semibold tracking-normal opacity-50">+</span></p></div><ArrowUpRight className={`h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 ${index === 1 ? "text-[#c8f169]" : "text-[#1747d1]"}`} /></div><p className={`mt-5 text-sm leading-6 ${index === 1 ? "text-white/70" : "text-[#171717]/60"}`}>{item.text}</p><p className={`mt-7 text-[10px] font-bold uppercase tracking-[0.14em] ${index === 1 ? "text-white/55" : "text-[#171717]/45"}`}>View full package</p></a>)}
+            </div>
+          </div>
+        </section>
+
         <section className="border-y border-[#171717]/10 bg-[#c8f169] py-20 sm:py-28">
-          <div className="container grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end"><div><p className="eyebrow">A little reassurance / 04</p><h2 className="section-title mt-4">Questions,<br /><span className="text-[#1747d1]">answered.</span></h2></div><div className="divide-y divide-[#171717]/20 border-y border-[#171717]/20">{faqs.map(([question, answer], index) => <div key={question} className="py-5"><button onClick={() => setOpenFaq(openFaq === index ? null : index)} className="flex w-full items-center justify-between gap-4 text-left font-display text-xl font-medium tracking-tight"><span>{question}</span><ChevronDown className={`h-5 w-5 shrink-0 transition-transform ${openFaq === index ? "rotate-180" : ""}`} /></button>{openFaq === index && <p className="mt-3 max-w-[620px] text-sm leading-6 text-[#171717]/60">{answer}</p>}</div>)}</div></div>
+          <div className="container grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end"><div><p className="eyebrow">A little reassurance / 05</p><h2 className="section-title mt-4">Questions,<br /><span className="text-[#1747d1]">answered.</span></h2></div><div className="divide-y divide-[#171717]/20 border-y border-[#171717]/20">{faqs.map(([question, answer], index) => <div key={question} className="py-5"><button onClick={() => setOpenFaq(openFaq === index ? null : index)} className="flex w-full items-center justify-between gap-4 text-left font-display text-xl font-medium tracking-tight"><span>{question}</span><ChevronDown className={`h-5 w-5 shrink-0 transition-transform ${openFaq === index ? "rotate-180" : ""}`} /></button>{openFaq === index && <p className="mt-3 max-w-[620px] text-sm leading-6 text-[#171717]/60">{answer}</p>}</div>)}</div></div>
         </section>
 
         <section id="contact" className="scroll-mt-20 bg-[#1747d1] py-24 text-white sm:py-32">
           <div className="container grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
-            <div><p className="eyebrow text-[#c8f169]">Let’s make it real / 05</p><h2 className="mt-4 max-w-[600px] font-display text-[clamp(3.5rem,7vw,7rem)] font-semibold leading-[0.86] tracking-[-0.08em]">Ready to be<br /><span className="text-[#c8f169]">seen?</span></h2><p className="mt-7 max-w-[400px] text-base leading-7 text-white/70">Tell us a little about what you’re building. We’ll reply with a useful next step, not a generic sales pitch.</p><a href="https://wa.me/254791555419" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#c8f169] underline decoration-[#c8f169]/40 underline-offset-4"><MessageCircle className="h-4 w-4" /> Prefer WhatsApp? Start there.</a></div>
+            <div><p className="eyebrow text-[#c8f169]">Let’s make it real / 06</p><h2 className="mt-4 max-w-[600px] font-display text-[clamp(3.5rem,7vw,7rem)] font-semibold leading-[0.86] tracking-[-0.08em]">Ready to be<br /><span className="text-[#c8f169]">seen?</span></h2><p className="mt-7 max-w-[400px] text-base leading-7 text-white/70">Tell us a little about what you’re building. We’ll reply with a useful next step, not a generic sales pitch.</p><a href="https://wa.me/254791555419" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#c8f169] underline decoration-[#c8f169]/40 underline-offset-4"><MessageCircle className="h-4 w-4" /> Prefer WhatsApp? Start there.</a></div>
             <form onSubmit={handleSubmit} className="rounded-[24px] bg-white p-6 text-[#171717] shadow-[0_24px_80px_rgba(10,42,125,0.32)] sm:p-8">
               {formSent ? <div className="flex min-h-[350px] flex-col items-center justify-center text-center"><span className="grid h-14 w-14 place-items-center rounded-full bg-[#c8f169] text-[#1747d1]"><Check className="h-7 w-7" /></span><h3 className="mt-6 font-display text-3xl font-medium tracking-tight">You’re on our list.</h3><p className="mt-3 max-w-[280px] text-sm leading-6 text-[#171717]/55">We’ll get back to you within 24 hours with a clear next step.</p><button type="button" onClick={() => setFormSent(false)} className="mt-7 text-xs font-bold uppercase tracking-[0.16em] text-[#1747d1]">Send another message</button></div> : <><div className="mb-7 flex items-start justify-between"><div><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#1747d1]">Project enquiry</p><h3 className="mt-2 font-display text-3xl font-medium tracking-tight">What are we building?</h3></div><span className="grid h-10 w-10 place-items-center rounded-full bg-[#f1eee7]"><Send className="h-4 w-4 text-[#1747d1]" /></span></div><div className="grid gap-5 sm:grid-cols-2"><label className="field-label">Your name<input required name="name" placeholder="Jane Wanjiku" className="field-input" /></label><label className="field-label">Email address<input required type="email" name="email" placeholder="jane@business.com" className="field-input" /></label><label className="field-label sm:col-span-2">What do you need?<select name="project" className="field-input"><option>Launch a new website</option><option>Sell online / add M-Pesa</option><option>Build a custom web app</option><option>Not sure yet — let’s talk</option></select></label><label className="field-label sm:col-span-2">Tell us a little more<textarea required name="message" rows={3} placeholder="A sentence or two about your business and goals..." className="field-input resize-none" /></label></div><button type="submit" className="group mt-6 flex w-full items-center justify-center gap-3 rounded-full bg-[#171717] px-5 py-4 text-sm font-semibold text-white transition hover:bg-[#1747d1]">Send enquiry <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></button><p className="mt-4 text-center text-[11px] text-[#171717]/45">No commitment required · Honest pricing · Response within 24 hours</p></>}
             </form>
