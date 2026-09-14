@@ -118,6 +118,9 @@ export default function Home() {
               <button onClick={() => scrollTo("work")} className="group inline-flex items-center gap-2 px-1 py-3 text-[13px] font-semibold text-[#171717]">
                 See selected work <ArrowDownRight className="h-4 w-4 transition-transform group-hover:translate-y-1 group-hover:translate-x-1" />
               </button>
+              <a href="/pricing" className="group inline-flex items-center gap-2 rounded-full border border-[#171717]/15 px-4 py-3 text-[13px] font-semibold text-[#171717] transition hover:border-[#1747d1] hover:text-[#1747d1]">
+                See pricing <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
             </div>
             <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs font-medium text-[#171717]/50">
               <span className="inline-flex items-center gap-2"><Clock3 className="h-3.5 w-3.5 text-[#1747d1]" /> Replies within 24h</span>
