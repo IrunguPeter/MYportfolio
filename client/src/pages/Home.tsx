@@ -73,6 +73,7 @@ export default function Home() {
           <div className="hidden items-center gap-8 md:flex">
             <button onClick={() => scrollTo("work")} className="nav-link">Work</button>
             <button onClick={() => scrollTo("services")} className="nav-link">Services</button>
+            <a href="/pricing" className="nav-link">Pricing</a>
             <button onClick={() => scrollTo("process")} className="nav-link">Process</button>
             <button onClick={() => scrollTo("about")} className="nav-link">About</button>
           </div>
@@ -88,6 +89,7 @@ export default function Home() {
             <div className="flex flex-col gap-4 text-lg font-medium">
               <button onClick={() => scrollTo("work")} className="text-left">Work</button>
               <button onClick={() => scrollTo("services")} className="text-left">Services</button>
+              <a href="/pricing" onClick={() => setMenuOpen(false)} className="text-left">Pricing</a>
               <button onClick={() => scrollTo("process")} className="text-left">Process</button>
               <button onClick={() => scrollTo("about")} className="text-left">About</button>
               <button onClick={() => scrollTo("contact")} className="mt-2 flex w-fit items-center gap-2 rounded-full bg-[#1747d1] px-4 py-3 text-sm font-semibold text-white">Start a project <ArrowUpRight className="h-4 w-4" /></button>
