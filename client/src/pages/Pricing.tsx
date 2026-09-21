@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowUpRight, Check, MessageCircle } from "lucide-react";
 import { Link } from "wouter";
+import { getSiteSettings, type SiteSettings } from "@/lib/siteSettings";
 
 const packages = [
   {
@@ -38,6 +40,16 @@ function Logo() {
 }
 
 export default function Pricing() {
+  const [settings, setSettings] = useState<SiteSettings>(getSiteSettings);
+
+  useEffect(() => {
+    const refreshSettings = () => setSettings(getSiteSettings());
+    window.addEventListener("devstudio:settings-updated", refreshSettings);
+    return () => window.removeEventListener("devstudio:settings-updated", refreshSettings);
+  }, []);
+
+  const managedPackages = packages.map((item, index) => ({ ...item, ...settings.pricing[index] }));
+
   return (
     <div className="min-h-screen overflow-hidden bg-[#f7f5ef] text-[#171717] selection:bg-[#c8f169] selection:text-[#171717]">
       <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.035] noise" />
@@ -70,7 +82,7 @@ export default function Pricing() {
 
         <section className="container pb-24 sm:pb-32">
           <div className="grid gap-5 lg:grid-cols-3">
-            {packages.map((item) => (
+            {managedPackages.map((item) => (
               <article key={item.name} className={`relative flex flex-col overflow-hidden rounded-[26px] border border-[#171717]/10 p-6 sm:p-8 ${item.accent === "cobalt" ? "bg-[#1747d1] text-white shadow-[0_24px_60px_rgba(23,71,209,0.22)]" : item.accent === "ink" ? "bg-[#171717] text-white" : "bg-white/65"}`}>
                 <div className="flex items-center justify-between gap-3">
                   <p className={`text-[10px] font-bold uppercase tracking-[0.18em] ${item.accent === "paper" ? "text-[#1747d1]" : "text-[#c8f169]"}`}>{item.label}</p>
@@ -96,7 +108,7 @@ export default function Pricing() {
         </section>
       </main>
 
-      <footer className="bg-[#171717] py-8 text-white"><div className="container flex flex-col gap-7 sm:flex-row sm:items-center sm:justify-between"><div className="flex items-center gap-3"><img src="/logo-mark.svg" alt="" className="h-8 w-8 rounded-lg" /><span className="text-sm font-semibold">DevStudio<span className="text-[#c8f169]">.</span></span></div><div className="flex flex-wrap gap-5 text-xs text-white/50"><a href="mailto:irungupeter204@gmail.com" className="transition hover:text-white">Email</a><a href="tel:+254791555419" className="transition hover:text-white">+254 791 555 419</a><span>© 2026 DevStudio</span></div></div></footer>
+      <footer className="bg-[#171717] py-8 text-white"><div className="container flex flex-col gap-7 sm:flex-row sm:items-center sm:justify-between"><div className="flex items-center gap-3"><img src="/logo-mark.svg" alt="" className="h-8 w-8 rounded-lg" /><span className="text-sm font-semibold">DevStudio<span className="text-[#c8f169]">.</span></span></div><div className="flex flex-wrap gap-5 text-xs text-white/50"><a href="mailto:irungupeter204@gmail.com" className="transition hover:text-white">Email</a><a href="tel:+254791555419" className="transition hover:text-white">+254 791 555 419</a><a href="/admin" className="transition hover:text-white">Admin</a><span>© 2026 DevStudio</span></div></div></footer>
     </div>
   );
 }

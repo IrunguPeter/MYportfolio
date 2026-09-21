@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -17,6 +17,7 @@ import {
   Zap,
 } from "lucide-react";
 import { toast } from "sonner";
+import { getSiteSettings, saveEnquiry, type SiteSettings } from "@/lib/siteSettings";
 
 const work = [
   { label: "01 / Wellness", title: "Move more freely.", accent: "cobalt", imagePosition: "object-left" },
@@ -52,6 +53,13 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [formSent, setFormSent] = useState(false);
+  const [settings, setSettings] = useState<SiteSettings>(getSiteSettings);
+
+  useEffect(() => {
+    const refreshSettings = () => setSettings(getSiteSettings());
+    window.addEventListener("devstudio:settings-updated", refreshSettings);
+    return () => window.removeEventListener("devstudio:settings-updated", refreshSettings);
+  }, []);
 
   const scrollTo = (id: string) => {
     setMenuOpen(false);
@@ -60,6 +68,13 @@ export default function Home() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    saveEnquiry({
+      name: String(data.get("name") || ""),
+      email: String(data.get("email") || ""),
+      project: String(data.get("project") || ""),
+      message: String(data.get("message") || ""),
+    });
     setFormSent(true);
     toast.success("Message received — we’ll be in touch within 24 hours.");
   };
@@ -109,7 +124,7 @@ export default function Home() {
               Get your<br /><span className="relative inline-block text-[#1747d1]">business</span> online.
             </h1>
             <p className="mt-8 max-w-[470px] text-[17px] leading-7 text-[#171717]/65 sm:text-[19px]">
-              DevStudio designs and builds fast, beautiful websites and online stores that help Kenyan businesses get discovered, trusted, and paid.
+              {settings.description}
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <button onClick={() => scrollTo("contact")} className="group">
@@ -217,7 +232,7 @@ export default function Home() {
               <p className="max-w-[310px] text-sm leading-6 text-[#171717]/60">Clear KSh pricing for common projects. We’ll confirm the final scope before anything starts.</p>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
-              {[{ name: "Launch", price: "25,000", text: "Portfolio, landing page, or small business website." }, { name: "Sell", price: "70,000", text: "Online store, catalogue, M-Pesa, or bookings." }, { name: "Scale", price: "100,000", text: "Custom apps, POS systems, dashboards, or integrations." }].map((item, index) => <a href="/pricing" key={item.name} className={`group rounded-[22px] border border-[#171717]/10 p-6 transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(23,23,23,0.12)] ${index === 1 ? "bg-[#1747d1] text-white" : "bg-white/65"}`}><div className="flex items-start justify-between gap-4"><div><p className={`text-[10px] font-bold uppercase tracking-[0.16em] ${index === 1 ? "text-[#c8f169]" : "text-[#1747d1]"}`}>{item.name}</p><p className="mt-4 font-display text-4xl font-medium tracking-[-0.05em]">KSh {item.price}<span className="ml-1 text-sm font-sans font-semibold tracking-normal opacity-50">+</span></p></div><ArrowUpRight className={`h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 ${index === 1 ? "text-[#c8f169]" : "text-[#1747d1]"}`} /></div><p className={`mt-5 text-sm leading-6 ${index === 1 ? "text-white/70" : "text-[#171717]/60"}`}>{item.text}</p><p className={`mt-7 text-[10px] font-bold uppercase tracking-[0.14em] ${index === 1 ? "text-white/55" : "text-[#171717]/45"}`}>View full package</p></a>)}
+              {settings.pricing.map((item, index) => <a href="/pricing" key={item.name} className={`group rounded-[22px] border border-[#171717]/10 p-6 transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(23,23,23,0.12)] ${index === 1 ? "bg-[#1747d1] text-white" : "bg-white/65"}`}><div className="flex items-start justify-between gap-4"><div><p className={`text-[10px] font-bold uppercase tracking-[0.16em] ${index === 1 ? "text-[#c8f169]" : "text-[#1747d1]"}`}>{item.name}</p><p className="mt-4 font-display text-4xl font-medium tracking-[-0.05em]">KSh {item.price}<span className="ml-1 text-sm font-sans font-semibold tracking-normal opacity-50">+</span></p></div><ArrowUpRight className={`h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 ${index === 1 ? "text-[#c8f169]" : "text-[#1747d1]"}`} /></div><p className={`mt-5 text-sm leading-6 ${index === 1 ? "text-white/70" : "text-[#171717]/60"}`}>{item.description}</p><p className={`mt-7 text-[10px] font-bold uppercase tracking-[0.14em] ${index === 1 ? "text-white/55" : "text-[#171717]/45"}`}>View full package</p></a>)}
             </div>
           </div>
         </section>
@@ -237,7 +252,7 @@ export default function Home() {
       </main>
 
       <footer className="bg-[#171717] py-8 text-white">
-        <div className="container flex flex-col gap-7 sm:flex-row sm:items-center sm:justify-between"><div className="flex items-center gap-3"><img src="/logo-mark.svg" alt="" className="h-8 w-8 rounded-lg" /><span className="text-sm font-semibold">DevStudio<span className="text-[#c8f169]">.</span></span></div><div className="flex flex-wrap gap-5 text-xs text-white/50"><a href="mailto:irungupeter204@gmail.com" className="transition hover:text-white">Email</a><a href="tel:+254791555419" className="transition hover:text-white">+254 791 555 419</a><span>© 2026 DevStudio</span></div></div>
+        <div className="container flex flex-col gap-7 sm:flex-row sm:items-center sm:justify-between"><div className="flex items-center gap-3"><img src="/logo-mark.svg" alt="" className="h-8 w-8 rounded-lg" /><span className="text-sm font-semibold">DevStudio<span className="text-[#c8f169]">.</span></span></div><div className="flex flex-wrap gap-5 text-xs text-white/50"><a href="mailto:irungupeter204@gmail.com" className="transition hover:text-white">Email</a><a href="tel:+254791555419" className="transition hover:text-white">+254 791 555 419</a><a href="/admin" className="transition hover:text-white">Admin</a><span>© 2026 DevStudio</span></div></div>
       </footer>
     </div>
   );
