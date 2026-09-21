@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowUpRight, Check, MessageCircle } from "lucide-react";
 import { Link } from "wouter";
-import { getSiteSettings, type SiteSettings } from "@/lib/siteSettings";
+import { getSiteSettings, loadSiteSettings, type SiteSettings } from "@/lib/siteSettings";
 
 const packages = [
   {
@@ -44,6 +44,7 @@ export default function Pricing() {
 
   useEffect(() => {
     const refreshSettings = () => setSettings(getSiteSettings());
+    void loadSiteSettings().then(setSettings);
     window.addEventListener("devstudio:settings-updated", refreshSettings);
     return () => window.removeEventListener("devstudio:settings-updated", refreshSettings);
   }, []);

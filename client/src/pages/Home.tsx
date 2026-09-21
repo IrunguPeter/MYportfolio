@@ -17,7 +17,7 @@ import {
   Zap,
 } from "lucide-react";
 import { toast } from "sonner";
-import { getSiteSettings, saveEnquiry, type SiteSettings } from "@/lib/siteSettings";
+import { getSiteSettings, loadSiteSettings, saveEnquiry, type SiteSettings } from "@/lib/siteSettings";
 
 const work = [
   { label: "01 / Wellness", title: "Move more freely.", accent: "cobalt", imagePosition: "object-left" },
@@ -57,6 +57,7 @@ export default function Home() {
 
   useEffect(() => {
     const refreshSettings = () => setSettings(getSiteSettings());
+    void loadSiteSettings().then(setSettings);
     window.addEventListener("devstudio:settings-updated", refreshSettings);
     return () => window.removeEventListener("devstudio:settings-updated", refreshSettings);
   }, []);
@@ -66,17 +67,21 @@ export default function Home() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    saveEnquiry({
-      name: String(data.get("name") || ""),
-      email: String(data.get("email") || ""),
-      project: String(data.get("project") || ""),
-      message: String(data.get("message") || ""),
-    });
-    setFormSent(true);
-    toast.success("Message received — we’ll be in touch within 24 hours.");
+    try {
+      await saveEnquiry({
+        name: String(data.get("name") || ""),
+        email: String(data.get("email") || ""),
+        project: String(data.get("project") || ""),
+        message: String(data.get("message") || ""),
+      });
+      setFormSent(true);
+      toast.success("Message received — we’ll be in touch within 24 hours.");
+    } catch {
+      toast.error("We couldn’t send that just now. Please try again or use WhatsApp.");
+    }
   };
 
   return (

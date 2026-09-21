@@ -29,4 +29,4 @@ The site includes a responsive homepage, generated website mockups, Launch/Sell/
 
 ## Admin workspace
 
-Open `/admin` to edit the business description and starting prices, and to review enquiries submitted from the same browser. The current static deployment stores these changes in browser local storage; connect a database or CMS before using it as a multi-device production content system.
+Open `/admin` to edit the business description and starting prices, and to review enquiries submitted by visitors. The workspace uses Supabase for shared storage, row-level security, and passwordless magic-link authentication for `irungupeter204@gmail.com`.
