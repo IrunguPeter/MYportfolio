@@ -167,6 +167,26 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="bg-[#10151f] py-20 text-white sm:py-28">
+          <div className="container">
+            <div className="mb-10 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+              <div>
+                <p className="eyebrow !text-[#c8f169]">A cinematic direction / 01</p>
+                <h2 className="section-title mt-4 max-w-[700px] text-white">Make the first<br /><span className="text-[#c8f169]">impression move.</span></h2>
+              </div>
+              <p className="max-w-[300px] text-sm leading-6 text-white/55">A visual study for brands that want their digital presence to feel considered, modern, and impossible to scroll past.</p>
+            </div>
+            <div className="group relative overflow-hidden rounded-[28px] border border-white/15 bg-[#171f2e] shadow-[0_30px_100px_rgba(0,0,0,0.35)]">
+              <img src="/assets/devstudio-cinematic.webp" alt="Cinematic DevStudio website concept with cobalt and lime light trails" className="h-auto w-full object-cover transition duration-700 group-hover:scale-[1.02]" loading="lazy" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#10151f]/75 via-transparent to-transparent" />
+              <div className="absolute inset-x-5 bottom-5 flex flex-wrap items-end justify-between gap-4 sm:inset-x-8 sm:bottom-8">
+                <div><p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c8f169]">DevStudio / Visual system</p><p className="mt-2 font-display text-2xl tracking-tight sm:text-3xl">Built to be remembered.</p></div>
+                <button onClick={() => scrollTo("contact")} className="rounded-full bg-[#c8f169] px-4 py-3 text-[12px] font-bold text-[#171717] transition hover:bg-white">Bring this energy to your brand <ArrowUpRight className="ml-1 inline h-3.5 w-3.5" /></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="work" className="container scroll-mt-20 py-24 sm:py-32">
           <div className="mb-12 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
             <div>
