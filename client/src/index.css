@@ -61,8 +61,12 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 
 @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes float { 0%, 100% { transform: translateY(0) rotate(0.5deg); } 50% { transform: translateY(-8px) rotate(-0.5deg); } }
+@keyframes cinematic-pan { 0%, 100% { transform: scale(1.04) translate3d(-1%, 0, 0); } 50% { transform: scale(1.09) translate3d(1%, -0.5%, 0); } }
+@keyframes cinematic-sheen { 0%, 100% { opacity: 0; transform: translate3d(-18%, 0, 0) skewX(-12deg); } 35%, 65% { opacity: 1; } 50% { transform: translate3d(18%, 0, 0) skewX(-12deg); } }
 .animate-rise { animation: rise 700ms cubic-bezier(.23,1,.32,1) both; }
 .animate-float { animation: float 7s ease-in-out infinite; }
+.cinematic-pan { animation: cinematic-pan 14s ease-in-out infinite; transform-origin: center; }
+.cinematic-sheen { animation: cinematic-sheen 9s cubic-bezier(.23,1,.32,1) infinite; }
 
 @media (min-width: 640px) { .container { padding-inline: 2rem; } }
 @media (min-width: 1024px) { .container { padding-inline: 3rem; } }

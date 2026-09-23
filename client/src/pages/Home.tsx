@@ -177,7 +177,8 @@ export default function Home() {
               <p className="max-w-[300px] text-sm leading-6 text-white/55">A visual study for brands that want their digital presence to feel considered, modern, and impossible to scroll past.</p>
             </div>
             <div className="group relative overflow-hidden rounded-[28px] border border-white/15 bg-[#171f2e] shadow-[0_30px_100px_rgba(0,0,0,0.35)]">
-              <img src="/assets/devstudio-cinematic.webp" alt="Cinematic DevStudio website concept with cobalt and lime light trails" className="h-auto w-full object-cover transition duration-700 group-hover:scale-[1.02]" loading="lazy" />
+              <img src="/assets/devstudio-cinematic.webp" alt="Cinematic DevStudio website concept with cobalt and lime light trails" className="cinematic-pan h-auto w-full object-cover transition duration-700 group-hover:scale-[1.02]" loading="lazy" />
+              <div className="cinematic-sheen pointer-events-none absolute -inset-x-1/3 top-0 h-full bg-gradient-to-r from-transparent via-[#c8f169]/10 to-transparent" />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#10151f]/75 via-transparent to-transparent" />
               <div className="absolute inset-x-5 bottom-5 flex flex-wrap items-end justify-between gap-4 sm:inset-x-8 sm:bottom-8">
                 <div><p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c8f169]">DevStudio / Visual system</p><p className="mt-2 font-display text-2xl tracking-tight sm:text-3xl">Built to be remembered.</p></div>
